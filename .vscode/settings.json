@@ -1,0 +1,11 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.test.defaultConfig": "first",
+    "java.test.config": {
+      "name": "first",
+      "workingDirectory": "${workspaceFolder}",
+      "args": [],
+      "vmargs": ["--add-exports", "javafx.graphics/com.sun.javafx.application=ALL-UNNAMED"],
+      "env": {},
+    }
+}

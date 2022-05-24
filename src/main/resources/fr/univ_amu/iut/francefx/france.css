@@ -1,0 +1,9 @@
+
+.france {
+    -background-color: #3f3f4f;
+    -fill-color      : #d9d9dc;
+    -stroke-color    : #000000;
+    -hover-color     : #456acf;
+    -pressed-color   : #789dff;
+    -selected-color  : #9dff78;
+}

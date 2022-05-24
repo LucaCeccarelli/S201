@@ -1,0 +1,14 @@
+{
+    "tests": [
+      {
+        "name": "Test",
+        "setup": "",
+        "run": "xvfb-run --auto-servernum mvn test",
+        "input": "",
+        "output": "",
+        "comparison": "included",
+        "timeout": 30,
+        "points": null
+      }
+    ]
+  }
