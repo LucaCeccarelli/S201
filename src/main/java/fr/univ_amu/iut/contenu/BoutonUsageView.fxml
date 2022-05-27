@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+
+<fx:root textAlignment="CENTER" textFill="#004dff" type="javafx.scene.control.Button" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <font>
+      <Font name="Dyuthi Regular" size="20.0" />
+   </font>
+</fx:root>

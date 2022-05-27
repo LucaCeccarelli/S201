@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import fr.univ_amu.iut.contenu.BoutonUsageControl?>
+<fx:root hgap="10.0" type="javafx.scene.layout.GridPane" vgap="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BoutonUsageControl mnemonicParsing="false" text="Button" />
+      <BoutonUsageControl mnemonicParsing="false" text="Button" GridPane.columnIndex="1" />
+      <BoutonUsageControl mnemonicParsing="false" text="Button" GridPane.columnIndex="2" />
+      <BoutonUsageControl mnemonicParsing="false" text="Button" GridPane.rowIndex="1" />
+      <BoutonUsageControl mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <BoutonUsageControl mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+   </children>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</fx:root>
