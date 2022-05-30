@@ -1,4 +1,4 @@
-package fr.univ_amu.iut.appMain;
+package fr.univ_amu.iut.app_main;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
