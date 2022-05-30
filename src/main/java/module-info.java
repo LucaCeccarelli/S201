@@ -14,5 +14,4 @@ open module francefx {
     exports fr.univ_amu.iut;
     exports fr.univ_amu.iut.dao;
     exports fr.univ_amu.iut.dao.factory;
-    exports fr.univ_amu.iut.onglets;
 }
