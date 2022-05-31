@@ -1,6 +1,7 @@
 package fr.univ_amu.iut.app_main;
 
 import fr.univ_amu.iut.components.ListTemplateControl;
+import fr.univ_amu.iut.contenu.Usages;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
@@ -24,5 +25,8 @@ public class LaunchAppControl extends VBox {
         }
         ListTemplateControl borderPane = new ListTemplateControl(new String[]{"Aa","bbb","ccc"});
         root.getTabs().add(new Tab("Contenu aaa borderPane ",borderPane));
+
+        Usages flowPane = new Usages();
+        root.getTabs().add(new Tab("Contenu",flowPane));
     }
 }

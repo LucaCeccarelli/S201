@@ -61,7 +61,7 @@ public class Thematique {
         return nom;
     }
 
-    public String[] getListeThematiques(){
+    public static String[] getListeThematiques(){
         String[] listeThematiques = new String[]{
                 Thematique.CitoyenneteNumerique.getNom(),
                 Thematique.ClasseInversee.getNom(),
