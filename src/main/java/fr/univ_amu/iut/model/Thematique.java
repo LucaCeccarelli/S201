@@ -52,6 +52,31 @@ public class Thematique {
     @Transient
     public static Thematique WebRadio = new Thematique("Webradio");
 
+    public static final Thematique[] listeThematiques = new Thematique[]{
+            Thematique.CitoyenneteNumerique,
+            Thematique.ClasseInversee,
+            Thematique.CreationNumerique,
+            Thematique.Hybridation,
+            Thematique.EcoleInclusive,
+            Thematique.Ludification,
+            Thematique.RealiteVirtuelle,
+            Thematique.TNE,
+            Thematique.TravailEntrePairs,
+            Thematique.Evaluation,
+            Thematique.DifferenciationPedagogique,
+            Thematique.FormationAuxOutilsNumeriques,
+            Thematique.TravailCollaboratif,
+            Thematique.WebRadio,
+            Thematique.PedagogieDeProjet,
+            Thematique.ReseauxSociaux,
+            Thematique.Programmation,
+            Thematique.ExpressionOrale,
+            Thematique.EnseignerADistance,
+            Thematique.TiersLab,
+            Thematique.FormerADistance,
+            Thematique.SExercerSentrainer,
+    };
+
     @Id
     @GeneratedValue
     int id;
@@ -61,38 +86,11 @@ public class Thematique {
         return nom;
     }
 
-    public static String[] getListeThematiques(){
-        String[] listeThematiques = new String[]{
-                Thematique.CitoyenneteNumerique.getNom(),
-                Thematique.ClasseInversee.getNom(),
-                Thematique.CreationNumerique.getNom(),
-                Thematique.Hybridation.getNom(),
-                Thematique.EcoleInclusive.getNom(),
-                Thematique.Ludification.getNom(),
-                Thematique.RealiteVirtuelle.getNom(),
-                Thematique.TNE.getNom(),
-                Thematique.TravailEntrePairs.getNom(),
-                Thematique.Evaluation.getNom(),
-                Thematique.DifferenciationPedagogique.getNom(),
-                Thematique.FormationAuxOutilsNumeriques.getNom(),
-                Thematique.TravailCollaboratif.getNom(),
-                Thematique.WebRadio.getNom(),
-                Thematique.PedagogieDeProjet.getNom(),
-                Thematique.ReseauxSociaux.getNom(),
-                Thematique.Programmation.getNom(),
-                Thematique.ExpressionOrale.getNom(),
-                Thematique.EnseignerADistance.getNom(),
-                Thematique.TiersLab.getNom(),
-                Thematique.FormerADistance.getNom(),
-                Thematique.SExercerSentrainer.getNom(),
-        };
-        return listeThematiques;
-    }
-
     public Thematique(String nom) {
         this.nom = nom;
     }
 
     public Thematique() {
     }
+
 }

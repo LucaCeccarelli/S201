@@ -20,7 +20,7 @@ public class LaunchAppControl extends TabPane {
 //        ListTemplateControl borderPane = new ListTemplateControl(new String[]{"Aa","bbb","ccc"});
 //        root.getTabs().add(new Tab("Contenu aaa borderPane ",borderPane));
 
-//        UsagesContenu flowPane = new UsagesContenu();
+//        UsagesContenuControl flowPane = new UsagesContenuControl();
         getTabs().add(new AccueilOnglet());
 
     }

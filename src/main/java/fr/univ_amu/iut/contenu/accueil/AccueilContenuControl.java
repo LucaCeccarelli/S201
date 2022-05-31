@@ -10,11 +10,11 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
-public class AccueilContenuController extends BorderPane {
+public class AccueilContenuControl extends BorderPane {
 
     private Tab parentTab;
 
-    public AccueilContenuController(Tab parentTab) {
+    public AccueilContenuControl(Tab parentTab) {
         this.parentTab = parentTab;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AccueilContenuView.fxml"));
         fxmlLoader.setRoot(this);

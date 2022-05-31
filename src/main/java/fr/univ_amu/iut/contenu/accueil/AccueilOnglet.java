@@ -7,7 +7,7 @@ public class AccueilOnglet extends Tab {
     public AccueilOnglet() {
         setText("Onglet Accueil");
         setClosable(false);
-        setContent(new AccueilContenuController(this));
+        setContent(new AccueilContenuControl(this));
         // TODO: ajouter une classe de style
     }
 
