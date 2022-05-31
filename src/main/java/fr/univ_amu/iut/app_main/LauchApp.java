@@ -2,6 +2,7 @@ package fr.univ_amu.iut.app_main;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -12,7 +13,7 @@ public class LauchApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        VBox root = new LaunchAppControl();
+        TabPane root = new LaunchAppControl();
         stage.setScene(new Scene(root));
         stage.show();
     }

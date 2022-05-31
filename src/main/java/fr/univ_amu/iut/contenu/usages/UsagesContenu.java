@@ -1,14 +1,14 @@
-package fr.univ_amu.iut.contenu;
+package fr.univ_amu.iut.contenu.usages;
 
 import fr.univ_amu.iut.model.Thematique;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 
-public class Usages extends FlowPane {
+public class UsagesContenu extends FlowPane {
 
     String[] listeThematiques;
 
-    public Usages(){
+    public UsagesContenu(){
         listeThematiques = Thematique.getListeThematiques();
         initButtons();
     }

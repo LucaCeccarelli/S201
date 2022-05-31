@@ -11,6 +11,5 @@ public class Projet {
     private Ressource ressource;
     private String commentaire;
 
-    public
 
 }
