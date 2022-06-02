@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.FlowPane;
@@ -21,7 +22,7 @@ public class UsagesContenuControl extends FlowPane {
         public void handle(ActionEvent event) {
             //Code de l'écouteur d'événement
             TabPane tabPane = parentTab.getTabPane();
-            tabPane.getTabs().add(new Tab("Usage selc",new ListTemplateControl(new String[]{"aa"})));
+            tabPane.getTabs().add(new Tab(((Control)event.getSource()).getId(),new ListTemplateControl(new String[]{"aa"})));
         }
     };
 
@@ -42,6 +43,7 @@ public class UsagesContenuControl extends FlowPane {
         for (Thematique thematique : Thematique.listeThematiques) {
             Button bt = new Button(thematique.getNom());
             bt.setPrefSize(120, 60);
+            bt.setId(thematique.getNom());
             bt.setOnAction(ecouteur);
             getChildren().add(bt);
         }
