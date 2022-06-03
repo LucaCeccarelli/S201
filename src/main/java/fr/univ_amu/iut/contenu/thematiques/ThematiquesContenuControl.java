@@ -1,6 +1,11 @@
 package fr.univ_amu.iut.contenu.thematiques;
 
+import fr.univ_amu.iut.app_main.LaunchApp;
+import fr.univ_amu.iut.components.BoutonThematique;
+import fr.univ_amu.iut.contenu.thematique.ThematiqueOnglet;
 import fr.univ_amu.iut.model.Thematique;
+import jakarta.persistence.TypedQuery;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +26,7 @@ public class ThematiquesContenuControl extends FlowPane {
         public void handle(ActionEvent event) {
             //Code de l'écouteur d'événement
             TabPane tabPane = parentTab.getTabPane();
-            tabPane.getTabs().add(new Tab(((Control)event.getSource()).getId(),new ListTemplateControl(new String[]{"aa"})));
+            tabPane.getTabs().add(new ThematiqueOnglet(((BoutonThematique)event.getSource()).getThematique()));
         }
     };
 
@@ -39,10 +44,10 @@ public class ThematiquesContenuControl extends FlowPane {
     }
 
     public void initButtons(){
-        for (Thematique thematique : Thematique.listeThematiques) {
-            Button bt = new Button(thematique.getNom());
+        TypedQuery<Thematique> query = LaunchApp.em.createNamedQuery("Thematique.findAll", Thematique.class);
+        for (Thematique thematique : FXCollections.observableList(query.getResultList())) {
+            BoutonThematique bt = new BoutonThematique(thematique);
             bt.setPrefSize(120, 60);
-            bt.setId(thematique.getNom());
             bt.setOnAction(ecouteur);
             getChildren().add(bt);
         }
