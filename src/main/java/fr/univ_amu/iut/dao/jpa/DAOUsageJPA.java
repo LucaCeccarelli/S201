@@ -83,7 +83,7 @@ public class DAOUsageJPA implements DAOUsage {
     }
 
     @Override
-    public List<Usage> findByNiveau(Niveau niveau) {
+    public List<Usage> findByNiveau(String niveau) {
         TypedQuery<Usage> query = entityManager.createNamedQuery("Usage.findByTNiveau", Usage.class);
         query.setParameter("niveau", niveau);
         return query.getResultList();

@@ -12,7 +12,7 @@ public interface DAOUsage extends DAO<Usage, Integer>{
 
     List<Usage> findByThematique(Thematique thematique);
 
-    List<Usage> findByNiveau(Niveau niveau);
+    List<Usage> findByNiveau(String niveau);
 
     List<Usage> findByAcademie(Academie academie);
 
