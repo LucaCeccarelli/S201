@@ -101,4 +101,7 @@ public class Thematique {
     public Thematique() {
     }
 
+    public String toString(){
+        return nom;
+    }
 }

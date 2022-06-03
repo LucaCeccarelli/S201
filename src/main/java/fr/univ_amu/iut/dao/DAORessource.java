@@ -6,6 +6,6 @@ import java.net.URL;
 
 public interface DAORessource extends DAO<Ressource, Integer>{
 
-    Ressource findByUrl(URL url);
+    Ressource findByUrl(String url);
 
 }

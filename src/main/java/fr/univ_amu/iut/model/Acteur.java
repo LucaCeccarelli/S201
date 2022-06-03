@@ -109,4 +109,8 @@ public class Acteur {
     public void setTelephone(String telephone) {
         coordonees.setTelephone(telephone);
     }
+
+    public String toString(){
+        return prenom + " " + nom;
+    }
 }
