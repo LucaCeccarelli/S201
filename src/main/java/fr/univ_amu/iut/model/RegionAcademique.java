@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "RegionAcademique.findAll", query = "SELECT p FROM RegionAcademique p"),
-        @NamedQuery(name = "RegionAcademique.getById", query = "SELECT p FROM RegionAcademique p WHERE p.id = :id"),
-        @NamedQuery(name = "RegionAcademique.findByNom", query = "SELECT p FROM RegionAcademique p WHERE p.nom = :nom")
+        @NamedQuery(name = "RegionAcademique.findAll", query = "SELECT p FROM REGION_ACADEMIQUE p"),
+        @NamedQuery(name = "RegionAcademique.getById", query = "SELECT p FROM REGION_ACADEMIQUE p WHERE p.id = :id"),
+        @NamedQuery(name = "RegionAcademique.findByNom", query = "SELECT p FROM REGION_ACADEMIQUE p WHERE p.nom = :nom")
 })
 public class RegionAcademique {
     @Transient
