@@ -1,7 +1,6 @@
 package fr.univ_amu.iut.contenu.reseaux;
 
-import fr.univ_amu.iut.components.ListTemplateControl;
-import fr.univ_amu.iut.contenu.usages.UsagesOnglet;
+import fr.univ_amu.iut.contenu.academie.AcademieOnglet;
 import fr.univ_amu.iut.view.map.AcademiePath;
 import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
@@ -40,7 +39,7 @@ public class ReseauxContenuControl extends BorderPane {
                     System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
 
                     TabPane tabPane = this.parentTab.getTabPane();
-                    tabPane.getTabs().add(new Tab(academiePath.getAcademie().getNom(),new ListTemplateControl(new String[]{"Intitule","Usages","Discipline","Type de Ressource"})));
+                    tabPane.getTabs().add(new AcademieOnglet(academiePath.getAcademie()));
 
                 })
                 .selectionEnabled(true)

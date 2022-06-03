@@ -1,7 +1,7 @@
 package fr.univ_amu.iut.contenu.accueil;
 
 import fr.univ_amu.iut.contenu.reseaux.ReseauxOnglet;
-import fr.univ_amu.iut.contenu.usages.UsagesOnglet;
+//import fr.univ_amu.iut.contenu.usages.UsagesOnglet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +36,7 @@ public class AccueilContenuControl extends BorderPane {
     @FXML
     public void startupTabs(ActionEvent actionEvent) {
         TabPane tabPane = parentTab.getTabPane();
-        tabPane.getTabs().add(new UsagesOnglet());
+//        tabPane.getTabs().add(new UsagesOnglet());
         tabPane.getTabs().add(new ReseauxOnglet());
         tabPane.getTabs().remove(parentTab);
     }
