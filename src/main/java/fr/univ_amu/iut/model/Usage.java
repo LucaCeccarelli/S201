@@ -10,8 +10,12 @@ import java.util.List;
 @Table(name = "USAGE")
 @NamedQueries({
         @NamedQuery(name = "Usage.findAll", query = "SELECT p FROM Usage p"),
-        @NamedQuery(name = "Usage.findNom", query = "SELECT p FROM Usage p WHERE p.nom = :nom"),
-        @NamedQuery(name = "Usage.getById", query = "SELECT p FROM Usage p WHERE p.id = :id")
+        @NamedQuery(name = "Usage.getById", query = "SELECT p FROM Usage p WHERE p.id = :id"),
+        @NamedQuery(name = "Usage.findByNom", query = "SELECT p FROM Usage p WHERE p.nom = :nom"),
+        @NamedQuery(name = "Usage.findByDiscipline", query = "SELECT p FROM Usage p WHERE p.discipline = :discipline"),
+        @NamedQuery(name = "Usage.findByThematique", query = "SELECT p FROM Usage p WHERE p.thematique = :thematique"),
+        @NamedQuery(name = "Usage.findByNiveau", query = "SELECT p FROM Usage p WHERE p.niveau = :niveau"),
+        @NamedQuery(name = "Usage.findByAcademie", query = "SELECT p FROM Usage p WHERE p.academie = :academie")
 })
 
 public class Usage {
@@ -43,6 +47,10 @@ public class Usage {
     String commentaire;
 
     public Usage() {
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNom() {

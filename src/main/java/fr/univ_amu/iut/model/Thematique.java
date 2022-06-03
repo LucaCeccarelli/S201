@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @NamedQueries({
         @NamedQuery(name = "Thematique.findAll", query = "SELECT p FROM Thematique p"),
         @NamedQuery(name = "Thematique.getById", query = "SELECT p FROM Thematique p WHERE p.id = :id"),
+        @NamedQuery(name = "Thematique.findByNom", query = "SELECT p FROM Thematique p WHERE p.nom = :nom")
 })
 public class Thematique {
     @Transient
@@ -89,6 +90,10 @@ public class Thematique {
 
     public Thematique(String nom) {
         this.nom = nom;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Thematique() {

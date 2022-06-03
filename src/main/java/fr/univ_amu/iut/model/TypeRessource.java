@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @NamedQueries({
         @NamedQuery(name = "TypeRessource.findAll", query = "SELECT p FROM TypeRessource p"),
         @NamedQuery(name = "TypeRessource.getById", query = "SELECT p FROM TypeRessource p WHERE p.id = :id"),
+        @NamedQuery(name = "TypeRessource.findByNom", query = "SELECT p FROM TypeRessource p WHERE p.nom = :nom")
 })
 public class TypeRessource {
     @Id
@@ -18,6 +19,10 @@ public class TypeRessource {
     }
 
     public TypeRessource() {}
+
+    public int getId() {
+        return id;
+    }
 
     public String getNom() {
         return nom;

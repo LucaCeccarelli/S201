@@ -9,8 +9,8 @@ import java.util.HashMap;
 @Table(name = "ACADEMIE")
 @NamedQueries({
         @NamedQuery(name = "Academie.findAll", query = "SELECT p FROM Academie p"),
-        @NamedQuery(name = "Academie.findNom", query = "SELECT p FROM Academie p WHERE p.nom = :nom"),
-        @NamedQuery(name = "Academie.getById", query = "SELECT p FROM Academie p WHERE p.code = :code")
+        @NamedQuery(name = "Academie.getById", query = "SELECT p FROM Academie p WHERE p.code = :code"),
+        @NamedQuery(name = "Academie.findByNom", query = "SELECT p FROM Academie p WHERE p.nom = :nom")
 })
 
 public class Academie {
