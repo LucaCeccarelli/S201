@@ -1,14 +1,21 @@
 package fr.univ_amu.iut.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Coordonees {
+    @Column(name = "NUM_ACT")
     private int numero;
+    @Column(name = "RUE_ACT")
     private String rue;
+    @Column(name = "CP_ACT")
     private String codePostal;
+    @Column(name = "VILLE_ACT")
     private String ville;
+    @Column(name = "MAIL_ACT")
     private String mail;
+    @Column(name = "TEL_ACT")
     private String telephone;
 
     public Coordonees() {

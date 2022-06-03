@@ -11,7 +11,9 @@ import jakarta.persistence.*;
 public class TypeRessource {
     @Id
     @GeneratedValue
+    @Column(name = "ID_TYPE_RES")
     int id;
+    @Column(name = "NOM_TYPE_RES")
     String nom;
 
     public TypeRessource(String nom) {

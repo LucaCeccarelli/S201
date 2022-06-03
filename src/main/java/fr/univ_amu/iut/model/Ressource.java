@@ -13,9 +13,12 @@ import java.net.URL;
 public class Ressource {
     @Id
     @GeneratedValue
+    @Column(name = "ID_RES")
     int id;
     @ManyToOne
+    @JoinColumn(name = "ID_TYPE_RES")
     TypeRessource typeRessource;
+    @Column(name = "LIEN_RES")
     URL lienRessource;
 
     public Ressource(TypeRessource typeRessource, URL lienRessource) {

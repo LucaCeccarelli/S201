@@ -11,7 +11,9 @@ import jakarta.persistence.*;
 public class TypeActeur {
     @Id
     @GeneratedValue
+    @Column(name = "ID_TYPE_ACT")
     int id;
+    @Column(name = "NOM_TYPE_ACT")
     String nom;
 
     public TypeActeur(String nom) {

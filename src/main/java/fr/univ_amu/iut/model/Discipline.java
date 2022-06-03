@@ -28,7 +28,9 @@ public class Discipline {
 
     @Id
     @GeneratedValue
+    @Column(name = "ID_DISC")
     int id;
+    @Column(name = "NOM_DISC")
     String nom;
 
     public Discipline() {
