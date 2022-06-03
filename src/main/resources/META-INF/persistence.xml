@@ -7,9 +7,9 @@
 
         <properties>
             <!-- database connection properties -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:derby:memory:usageBD;create=true"/>
-            <property name="jakarta.persistence.jdbc.user" value=""/>
-            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://tyke.db.elephantsql.com/ygnqhbhc"/>
+            <property name="jakarta.persistence.jdbc.user" value="ygnqhbhc"/>
+            <property name="jakarta.persistence.jdbc.password" value="9eqow-b5FZ-n8dLAbZVwJwG5IdX6rjVa"/>
 
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
