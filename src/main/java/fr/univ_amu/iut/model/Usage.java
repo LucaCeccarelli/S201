@@ -31,6 +31,7 @@ public class Usage {
     List<Ressource> ressources = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="ID_USAGE")
     List<Acteur> acteurs = new ArrayList<>();
 
     String commentaire;

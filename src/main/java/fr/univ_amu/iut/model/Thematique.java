@@ -52,6 +52,31 @@ public class Thematique {
     @Transient
     public static Thematique WebRadio = new Thematique("Webradio");
 
+    public static final Thematique[] listeThematiques = new Thematique[]{
+            Thematique.CitoyenneteNumerique,
+            Thematique.ClasseInversee,
+            Thematique.CreationNumerique,
+            Thematique.Hybridation,
+            Thematique.EcoleInclusive,
+            Thematique.Ludification,
+            Thematique.RealiteVirtuelle,
+            Thematique.TNE,
+            Thematique.TravailEntrePairs,
+            Thematique.Evaluation,
+            Thematique.DifferenciationPedagogique,
+            Thematique.FormationAuxOutilsNumeriques,
+            Thematique.TravailCollaboratif,
+            Thematique.WebRadio,
+            Thematique.PedagogieDeProjet,
+            Thematique.ReseauxSociaux,
+            Thematique.Programmation,
+            Thematique.ExpressionOrale,
+            Thematique.EnseignerADistance,
+            Thematique.TiersLab,
+            Thematique.FormerADistance,
+            Thematique.SExercerSentrainer,
+    };
+
     @Id
     @GeneratedValue
     int id;
@@ -67,4 +92,5 @@ public class Thematique {
 
     public Thematique() {
     }
+
 }
