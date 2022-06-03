@@ -7,6 +7,13 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
+@Table(name = "USAGE")
+@NamedQueries({
+        @NamedQuery(name = "Usage.findAll", query = "SELECT p FROM Usage p"),
+        @NamedQuery(name = "Usage.findNom", query = "SELECT p FROM Usage p WHERE p.nom = :nom"),
+        @NamedQuery(name = "Usage.getById", query = "SELECT p FROM Usage p WHERE p.id = :id")
+})
+
 public class Usage {
     @Id
     @GeneratedValue
@@ -24,15 +31,14 @@ public class Usage {
     @Enumerated(EnumType.STRING)
     Niveau niveau;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Academie> academies = new ArrayList<>();
+    @ManyToOne
+    Academie academie;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Ressource> ressources = new ArrayList<>();
+    @ManyToOne
+    Ressource ressource;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="ID_USAGE")
-    List<Acteur> acteurs = new ArrayList<>();
+    @ManyToOne
+    Acteur acteur;
 
     String commentaire;
 
@@ -79,31 +85,27 @@ public class Usage {
         this.niveau = niveau;
     }
 
-    public List<Academie> getAcademies() {
-        return academies;
+    public Academie getAcademie() {
+        return academie;
     }
 
-    public void addAcademies(Academie ... academies) {
-        this.academies.addAll(List.of(academies));
+    public void setAcademie(Academie academie){
+        this.academie = academie;
     }
-    public void addAcademies(Collection<? extends Academie> academies){
-        this.academies.addAll(academies);
-    }
-
-    public List<Ressource> getRessources() {
-        return ressources;
+    public Ressource getRessource() {
+        return ressource;
     }
 
-    public void addRessource(Ressource ressource) {
-        this.ressources.add(ressource);
+    public void setRessource(Ressource ressource) {
+        this.ressource = ressource;
     }
 
-    public List<Acteur> getActeurs() {
-        return acteurs;
+    public Acteur getActeur() {
+        return acteur;
     }
 
-    public void addActeur(Acteur acteur) {
-        this.acteurs.add(acteur);
+    public void setActeur(Acteur acteur) {
+        this.acteur = acteur;
     }
 
     public String getCommentaire() {
