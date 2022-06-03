@@ -36,8 +36,7 @@ public class Usage {
     @JoinColumn(name = "ID_THEMA")
     Thematique thematique;
 
-    @Enumerated(EnumType.STRING)
-    Niveau niveau;
+    String niveau;
 
     @ManyToOne
     @JoinColumn(name = "CODE_ACA")
@@ -90,11 +89,11 @@ public class Usage {
         this.thematique = thematique;
     }
 
-    public Niveau getNiveau() {
+    public String getNiveau() {
         return niveau;
     }
 
-    public void setNiveau(Niveau niveau) {
+    public void setNiveau(String niveau) {
         this.niveau = niveau;
     }
 
