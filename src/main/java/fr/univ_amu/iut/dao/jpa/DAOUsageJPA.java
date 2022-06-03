@@ -46,7 +46,7 @@ public class DAOUsageJPA implements DAOUsage {
         entityManager.getTransaction().begin();
         entityManager.persist(obj);
         entityManager.getTransaction().commit();
-        return null; // TODO entityManager.find(Usage.class, obj.getId());
+        return entityManager.find(Usage.class, obj.getId());
     }
 
     @Override

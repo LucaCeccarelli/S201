@@ -40,6 +40,7 @@ public class DAORessourceJPA implements DAORessource {
     @Override
     public Ressource getById(Integer id) {
         TypedQuery<Ressource> query = entityManager.createNamedQuery("Ressource.getById", Ressource.class);
+        query.setParameter("id", id);
         return query.getSingleResult();
     }
 
@@ -48,7 +49,7 @@ public class DAORessourceJPA implements DAORessource {
         entityManager.getTransaction().begin();
         entityManager.persist(obj);
         entityManager.getTransaction().commit();
-        return null; // TODO entityManager.find(Ressource.class,obj.getId());
+        return entityManager.find(Ressource.class,obj.getId());
     }
 
     @Override
@@ -67,6 +68,7 @@ public class DAORessourceJPA implements DAORessource {
     @Override
     public Ressource findByUrl(URL url) {
         TypedQuery<Ressource> query = entityManager.createNamedQuery("Ressource.findByUrl", Ressource.class);
+        query.setParameter("lienRessource", url);
         return query.getSingleResult();
     }
 }

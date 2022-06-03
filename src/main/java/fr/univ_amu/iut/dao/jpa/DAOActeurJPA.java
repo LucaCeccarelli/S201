@@ -38,6 +38,7 @@ public class DAOActeurJPA implements DAOActeur {
     @Override
     public Acteur getById(Integer id) {
         TypedQuery<Acteur> query = entityManager.createNamedQuery("Acteur.getById",Acteur.class);
+        query.setParameter("id", id);
         return query.getSingleResult();
     }
 
@@ -47,7 +48,7 @@ public class DAOActeurJPA implements DAOActeur {
         entityManager.persist(obj);
         entityManager.getTransaction().commit();
 
-        return entityManager.find(Acteur.class,obj.getNumero());
+        return entityManager.find(Acteur.class,obj.getId());
     }
 
     @Override
@@ -56,7 +57,6 @@ public class DAOActeurJPA implements DAOActeur {
             entityManager.getTransaction().begin();
             entityManager.merge(obj);
             entityManager.getTransaction().commit();
-
             return true;
         }catch (Exception e){
             return false;

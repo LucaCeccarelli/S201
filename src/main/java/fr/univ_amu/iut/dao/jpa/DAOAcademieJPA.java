@@ -63,6 +63,7 @@ public class DAOAcademieJPA implements DAOAcademie {
     @Override
     public Academie findByNom(String nom) {
         TypedQuery<Academie> query = entityManager.createNamedQuery("Academie.findByNom",Academie.class);
+        query.setParameter("nom", nom);
         return query.getSingleResult();
     }
 }
