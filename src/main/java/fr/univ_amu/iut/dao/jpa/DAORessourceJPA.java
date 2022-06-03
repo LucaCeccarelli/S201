@@ -66,7 +66,7 @@ public class DAORessourceJPA implements DAORessource {
     }
 
     @Override
-    public Ressource findByUrl(URL url) {
+    public Ressource findByUrl(String url) {
         TypedQuery<Ressource> query = entityManager.createNamedQuery("Ressource.findByUrl", Ressource.class);
         query.setParameter("lienRessource", url);
         return query.getSingleResult();

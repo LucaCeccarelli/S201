@@ -48,4 +48,8 @@ public class Discipline {
     public String getNom() {
         return nom;
     }
+
+    public String toString(){
+        return nom;
+    }
 }

@@ -19,9 +19,9 @@ public class Ressource {
     @JoinColumn(name = "ID_TYPE_RES")
     TypeRessource typeRessource;
     @Column(name = "LIEN_RES")
-    URL lienRessource;
+    String lienRessource;
 
-    public Ressource(TypeRessource typeRessource, URL lienRessource) {
+    public Ressource(TypeRessource typeRessource, String lienRessource) {
         this.typeRessource = typeRessource;
         this.lienRessource = lienRessource;
     }
@@ -38,7 +38,11 @@ public class Ressource {
         return id;
     }
 
-    public URL getLienRessource() {
+    public String getLienRessource() {
+        return lienRessource;
+    }
+
+    public String toString(){
         return lienRessource;
     }
 }

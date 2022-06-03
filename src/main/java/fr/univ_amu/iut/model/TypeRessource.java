@@ -3,10 +3,11 @@ package fr.univ_amu.iut.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "TYPE_RESSOURCE")
 @NamedQueries({
-        @NamedQuery(name = "TypeRessource.findAll", query = "SELECT p FROM TYPE_RESSOURCE p"),
-        @NamedQuery(name = "TypeRessource.getById", query = "SELECT p FROM TYPE_RESSOURCE p WHERE p.id = :id"),
-        @NamedQuery(name = "TypeRessource.findByNom", query = "SELECT p FROM TYPE_RESSOURCE p WHERE p.nom = :nom")
+        @NamedQuery(name = "TypeRessource.findAll", query = "SELECT p FROM TypeRessource p"),
+        @NamedQuery(name = "TypeRessource.getById", query = "SELECT p FROM TypeRessource p WHERE p.id = :id"),
+        @NamedQuery(name = "TypeRessource.findByNom", query = "SELECT p FROM TypeRessource p WHERE p.nom = :nom")
 })
 public class TypeRessource {
     @Id
@@ -27,6 +28,10 @@ public class TypeRessource {
     }
 
     public String getNom() {
+        return nom;
+    }
+
+    public String toString(){
         return nom;
     }
 }

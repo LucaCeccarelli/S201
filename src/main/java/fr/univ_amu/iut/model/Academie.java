@@ -114,4 +114,8 @@ public class Academie {
     public RegionAcademique getRegionAcademique() {
         return regionAcademique;
     }
+
+    public String toString(){
+        return nom;
+    }
 }
