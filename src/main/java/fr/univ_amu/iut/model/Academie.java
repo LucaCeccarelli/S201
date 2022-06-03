@@ -6,6 +6,13 @@ import java.util.Collection;
 import java.util.HashMap;
 
 @Entity
+@Table(name = "ACADEMIE")
+@NamedQueries({
+        @NamedQuery(name = "Academie.findAll", query = "SELECT p FROM Academie p"),
+        @NamedQuery(name = "Academie.getById", query = "SELECT p FROM Academie p WHERE p.code = :code"),
+        @NamedQuery(name = "Academie.findByNom", query = "SELECT p FROM Academie p WHERE p.nom = :nom")
+})
+
 public class Academie {
     private final static HashMap<String, Academie> INSTANCES = new HashMap<>();
     @Transient

@@ -1,11 +1,13 @@
 package fr.univ_amu.iut.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Discipline.findAll", query = "SELECT p FROM Discipline p"),
+        @NamedQuery(name = "Discipline.getById", query = "SELECT p FROM Discipline p WHERE p.id = :id"),
+        @NamedQuery(name = "Discipline.findByNom", query = "SELECT p FROM Discipline p WHERE p.nom = :nom")
+})
 public class Discipline {
     @Transient
     public static Discipline Toutes = new Discipline("Toutes disciplines");
@@ -35,6 +37,10 @@ public class Discipline {
 
     Discipline(String nom) {
         this.nom = nom;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNom() {

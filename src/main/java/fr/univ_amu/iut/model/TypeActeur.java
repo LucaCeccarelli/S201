@@ -1,10 +1,13 @@
 package fr.univ_amu.iut.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "TypeActeur.findAll", query = "SELECT p FROM TypeActeur p"),
+        @NamedQuery(name = "TypeActeur.getById", query = "SELECT p FROM TypeActeur p WHERE p.id = :id"),
+        @NamedQuery(name = "TypeActeur.findByNom", query = "SELECT p FROM TypeActeur p WHERE p.nom = :nom")
+})
 public class TypeActeur {
     @Id
     @GeneratedValue
@@ -17,6 +20,10 @@ public class TypeActeur {
 
     public TypeActeur() {
 
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNom() {

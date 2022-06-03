@@ -13,6 +13,6 @@
       <Button mnemonicParsing="false" onAction="#startupTabs" text="Button" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+      <ImageView fx:id ="imageview" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
    </top>
 </fx:root>
