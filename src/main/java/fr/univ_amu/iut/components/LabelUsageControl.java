@@ -5,9 +5,10 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-public class labelTemplate extends Label {
-    public labelTemplate(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("labelTemplateView.fxml"));
+public class LabelUsageControl extends Label {
+    public LabelUsageControl(String nom){
+        super(nom);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LabelUsageView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
