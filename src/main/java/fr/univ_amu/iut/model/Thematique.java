@@ -1,11 +1,12 @@
 package fr.univ_amu.iut.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Thematique.findAll", query = "SELECT p FROM Thematique p"),
+        @NamedQuery(name = "Thematique.getById", query = "SELECT p FROM Thematique p WHERE p.id = :id"),
+})
 public class Thematique {
     @Transient
     public static Thematique ClasseInversee= new Thematique("Classe inversée");

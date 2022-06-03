@@ -3,6 +3,10 @@ package fr.univ_amu.iut.model;
 import jakarta.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "RegionAcademique.findAll", query = "SELECT p FROM RegionAcademique p"),
+        @NamedQuery(name = "RegionAcademique.getById", query = "SELECT p FROM RegionAcademique p WHERE p.id = :id"),
+})
 public class RegionAcademique {
     @Transient
     public static RegionAcademique AuvergneRhoneAlpes = new RegionAcademique("Région académique Auvergne-Rhône-Alpes");

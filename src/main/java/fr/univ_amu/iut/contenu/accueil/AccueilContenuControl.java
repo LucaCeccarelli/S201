@@ -37,7 +37,6 @@ public class AccueilContenuControl extends BorderPane {
     public void startupTabs(ActionEvent actionEvent) {
         TabPane tabPane = parentTab.getTabPane();
         tabPane.getTabs().add(new UsagesOnglet());
-        // TODO open reseaux tab
         tabPane.getTabs().add(new ReseauxOnglet());
         tabPane.getTabs().remove(parentTab);
     }
