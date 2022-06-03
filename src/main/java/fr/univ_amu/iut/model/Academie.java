@@ -76,10 +76,13 @@ public class Academie {
     @Transient
     public static Academie Versailles = new Academie("VE", "Académie de Versailles", RegionAcademique.IleDeFrance);
     @Id
+    @Column(name = "CODE_ACA")
     String code;
+    @Column(name = "NOM_ACA")
     String nom;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_REG_ACA")
     RegionAcademique regionAcademique;
 
     private Academie(String code, String nom, RegionAcademique regionAcademique) {

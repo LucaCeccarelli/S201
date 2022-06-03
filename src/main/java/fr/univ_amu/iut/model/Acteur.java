@@ -10,15 +10,19 @@ import jakarta.persistence.*;
 public class Acteur {
     @Id
     @GeneratedValue
+    @Column(name = "ID_ACT")
     int id;
 
+    @Column(name = "NOM_ACT")
     String nom;
+    @Column(name = "PRENOM_ACT")
     String prenom;
 
     @Embedded
     Coordonees coordonees;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_TYPE_ACT")
     TypeActeur typeActeur;
 
     public Acteur() {

@@ -21,30 +21,35 @@ import java.util.List;
 public class Usage {
     @Id
     @GeneratedValue
+    @Column(name = "ID_USAGE")
     int id;
 
+    @Column(name = "NOM_USAGE")
     String nom;
     String description;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_DISC")
     Discipline discipline;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_THEMA")
     Thematique thematique;
 
     @Enumerated(EnumType.STRING)
     Niveau niveau;
 
     @ManyToOne
+    @JoinColumn(name = "CODE_ACA")
     Academie academie;
 
     @ManyToOne
+    @JoinColumn(name = "ID_RES")
     Ressource ressource;
 
     @ManyToOne
+    @JoinColumn(name = "ID_ACT")
     Acteur acteur;
-
-    String commentaire;
 
     public Usage() {
     }
@@ -116,11 +121,4 @@ public class Usage {
         this.acteur = acteur;
     }
 
-    public String getCommentaire() {
-        return commentaire;
-    }
-
-    public void setCommentaire(String commentaire) {
-        this.commentaire = commentaire;
-    }
 }

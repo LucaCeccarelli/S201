@@ -48,7 +48,9 @@ public class RegionAcademique {
 
     @Id
     @GeneratedValue
+    @Column(name = "ID_REG_ACA")
     int id;
+    @Column(name = "NOM_REG_ACA")
     String nom;
 
     public RegionAcademique(String nom) {

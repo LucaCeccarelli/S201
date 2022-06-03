@@ -81,7 +81,9 @@ public class Thematique {
 
     @Id
     @GeneratedValue
+    @Column(name = "ID_THEMA")
     int id;
+    @Column(name = "NOM_THEMA")
     String nom;
 
     public String getNom() {
