@@ -4,53 +4,64 @@ import fr.univ_amu.iut.dao.*;
 import fr.univ_amu.iut.dao.factory.DAOFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class DAOFactoryJPA implements DAOFactory {
 
     private EntityManager entityManager;
 
+    public EntityManager getEntityManager() {
+        if(entityManager == null){
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("gestionUsagePU");
+            entityManager = entityManagerFactory.createEntityManager();
+        }
+        return entityManager;
+    }
+
+    public DAOFactoryJPA() {}
+
     @Override
     public DAOAcademie createDAOAcademie() {
-        return null;
+        return new DAOAcademieJPA(entityManager);
     }
 
     @Override
     public DAOActeur createDAOActeur() {
-        return null;
+        return new DAOActeurJPA(entityManager);
     }
 
     @Override
     public DAODiscipline createDAODiscipline() {
-        return null;
+        return new DAODisciplineJPA(entityManager);
     }
 
     @Override
     public DAORegionAcademique createDAORegionAcademique() {
-        return null;
+        return new DAORegionAcademiqueJPA(entityManager);
     }
 
     @Override
     public DAORessource createDAORessource() {
-        return null;
+        return new DAORessourceJPA(entityManager);
     }
 
     @Override
     public DAOThematique createDAOThematique() {
-        return null;
+        return new DAOThematiqueJPA(entityManager);
     }
 
     @Override
     public DAOTypeActeur createDAOTypeActeur() {
-        return null;
+        return new DAOTypeActeurJPA(entityManager);
     }
 
     @Override
     public DAOTypeRessource createDAOTypeRessource() {
-        return null;
+        return new DAOTypeRessourceJPA(entityManager);
     }
 
     @Override
     public DAOUsage createDAOUsage() {
-        return null;
+        return new DAOUsageJPA(entityManager);
     }
 }
