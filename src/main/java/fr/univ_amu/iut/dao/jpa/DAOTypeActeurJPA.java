@@ -38,6 +38,7 @@ public class DAOTypeActeurJPA implements DAOTypeActeur {
     @Override
     public TypeActeur getById(Integer id) {
         TypedQuery<TypeActeur> query = entityManager.createNamedQuery("TypeActeur.getById", TypeActeur.class);
+        query.setParameter("id", id);
         return query.getSingleResult();
     }
 
@@ -46,7 +47,7 @@ public class DAOTypeActeurJPA implements DAOTypeActeur {
         entityManager.getTransaction().begin();
         entityManager.persist(obj);
         entityManager.getTransaction().commit();
-        return null; // TODO entityManager.find(TypeActeur.class,obj.getId());
+        return entityManager.find(TypeActeur.class,obj.getId());
     }
 
     @Override

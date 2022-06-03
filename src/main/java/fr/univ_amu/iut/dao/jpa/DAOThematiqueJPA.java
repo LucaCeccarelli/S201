@@ -38,6 +38,7 @@ public class DAOThematiqueJPA implements DAOThematique {
     @Override
     public Thematique getById(Integer id) {
         TypedQuery<Thematique> query = entityManager.createNamedQuery("Thematique.getById", Thematique.class);
+        query.setParameter("id", id);
         return query.getSingleResult();
     }
 
@@ -46,7 +47,7 @@ public class DAOThematiqueJPA implements DAOThematique {
         entityManager.getTransaction().begin();
         entityManager.persist(obj);
         entityManager.getTransaction().commit();
-        return null; // TODO entityManager.find(Thematique.class,obj.getId());
+        return entityManager.find(Thematique.class,obj.getId());
     }
 
     @Override

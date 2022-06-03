@@ -37,6 +37,7 @@ public class DAOTypeRessourceJPA implements DAOTypeRessource {
     @Override
     public TypeRessource getById(Integer id) {
         TypedQuery<TypeRessource> query = entityManager.createNamedQuery("TypeRessource.getById", TypeRessource.class);
+        query.setParameter("id",id);
         return query.getSingleResult();
     }
 
@@ -45,7 +46,7 @@ public class DAOTypeRessourceJPA implements DAOTypeRessource {
         entityManager.getTransaction().begin();
         entityManager.persist(obj);
         entityManager.getTransaction().commit();
-        return null; // TODO entityManager.find(TypeRessource.class, obj.getId());
+        return entityManager.find(TypeRessource.class, obj.getId());
     }
 
     @Override

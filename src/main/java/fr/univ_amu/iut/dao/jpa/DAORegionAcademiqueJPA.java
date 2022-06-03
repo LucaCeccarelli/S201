@@ -38,6 +38,7 @@ public class DAORegionAcademiqueJPA implements DAORegionAcademique {
     @Override
     public RegionAcademique getById(Integer id) {
         TypedQuery<RegionAcademique> query = entityManager.createNamedQuery("RegionAcademique.getById", RegionAcademique.class);
+        query.setParameter("id", id);
         return query.getSingleResult();
     }
 
@@ -65,6 +66,7 @@ public class DAORegionAcademiqueJPA implements DAORegionAcademique {
     @Override
     public RegionAcademique findByNom(String nom) {
         TypedQuery<RegionAcademique> query = entityManager.createNamedQuery("RegionAcademique.findByNom", RegionAcademique.class);
+        query.setParameter("nom", nom);
         return query.getSingleResult();
     }
 }

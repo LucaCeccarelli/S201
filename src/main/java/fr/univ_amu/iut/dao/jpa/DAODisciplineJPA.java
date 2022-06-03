@@ -38,6 +38,7 @@ public class DAODisciplineJPA implements DAODiscipline {
     @Override
     public Discipline getById(Integer id) {
         TypedQuery<Discipline> query = entityManager.createNamedQuery("Discipline.getById", Discipline.class);
+        query.setParameter("id", id);
         return query.getSingleResult();
     }
 
@@ -46,8 +47,7 @@ public class DAODisciplineJPA implements DAODiscipline {
         entityManager.getTransaction().begin();
         entityManager.persist(obj);
         entityManager.getTransaction().commit();
-
-        return null;//entityManager.find(Discipline.class,obj.getId());
+        return entityManager.find(Discipline.class,obj.getId());
     }
 
     @Override
@@ -56,7 +56,6 @@ public class DAODisciplineJPA implements DAODiscipline {
             entityManager.getTransaction().begin();
             entityManager.merge(obj);
             entityManager.getTransaction().commit();
-
             return true;
         }catch (Exception e){
             return false;
@@ -66,6 +65,7 @@ public class DAODisciplineJPA implements DAODiscipline {
     @Override
     public Discipline findByNom(String nom) {
         TypedQuery<Discipline> query = entityManager.createNamedQuery("Discipline.findByNom", Discipline.class);
+        query.setParameter("nom", nom);
         return query.getSingleResult();
     }
 }
