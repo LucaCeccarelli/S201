@@ -1,20 +1,21 @@
 package fr.univ_amu.iut.contenu.academie;
 
 import fr.univ_amu.iut.app_main.LaunchApp;
-import fr.univ_amu.iut.dao.DAOUsage;
-import fr.univ_amu.iut.dao.factory.DAOFactory;
-import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
-import fr.univ_amu.iut.dao.factory.DAOType;
-import fr.univ_amu.iut.dao.jpa.DAOFactoryJPA;
+import fr.univ_amu.iut.contenu.usage.UsageOnglet;
 import fr.univ_amu.iut.model.*;
 import jakarta.persistence.TypedQuery;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.List;
@@ -35,11 +36,20 @@ public class AcademieContenuControl extends TableView<Usage> {
         }
 
         remplirTable(academie);
+        super.setEditable(true);
     }
 
     private void remplirTable(Academie academie) {
         TableColumn<Usage, String> nom = new TableColumn<>("Intitulé");
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+
+        nom.setOnEditStart(new EventHandler<TableColumn.CellEditEvent<Usage, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Usage, String> usageStringCellEditEvent) {
+                usageStringCellEditEvent.getRowValue();
+                System.out.println("hello");
+            }
+        });
 
         TableColumn<Usage, Discipline> discipline = new TableColumn<>("Discipline");
         discipline.setCellValueFactory(new PropertyValueFactory<>("discipline"));
@@ -51,8 +61,24 @@ public class AcademieContenuControl extends TableView<Usage> {
         niveau.setCellValueFactory(new PropertyValueFactory<>("niveau"));
 
         // TODO colonne bouton et peut être favoris
+        //Bouton pour acceder au detail
+        TableColumn<Usage, String> detail = new TableColumn<>("Detail du Projet");
+        detail.setCellValueFactory(new Callback<CellDataFeatures<Usage, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(CellDataFeatures<Usage, String> p) {
+                return new ReadOnlyObjectWrapper("Cliquez Ici !");
+            }
+        });
+        detail.setOnEditStart(new EventHandler<TableColumn.CellEditEvent<Usage, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Usage, String> usageStringCellEditEvent) {
+                System.out.println(usageStringCellEditEvent.getRowValue().getNom() + " as été selectionné");
+                TabPane tabPane = parentTab.getTabPane();
+                tabPane.getTabs().add(new UsageOnglet(usageStringCellEditEvent.getRowValue()));
+            }
+        });
+        //Fin bouton acceder aux details
 
-        getColumns().addAll(List.of(nom, discipline, thematique, niveau));
+        getColumns().addAll(List.of(nom, discipline, thematique, niveau,detail));
 
         TypedQuery<Usage> query = LaunchApp.em.createNamedQuery("Usage.findByAcademie", Usage.class);
         query.setParameter("academie", academie);

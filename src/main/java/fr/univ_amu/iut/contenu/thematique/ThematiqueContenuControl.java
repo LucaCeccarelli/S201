@@ -1,17 +1,23 @@
 package fr.univ_amu.iut.contenu.thematique;
 
 import fr.univ_amu.iut.app_main.LaunchApp;
+import fr.univ_amu.iut.contenu.usage.UsageOnglet;
 import fr.univ_amu.iut.model.Academie;
 import fr.univ_amu.iut.model.Discipline;
 import fr.univ_amu.iut.model.Thematique;
 import fr.univ_amu.iut.model.Usage;
 import jakarta.persistence.TypedQuery;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.List;
@@ -33,6 +39,7 @@ public class ThematiqueContenuControl extends TableView<Usage> {
         }
 
         remplirTable(thematique);
+        super.setEditable(true);
     }
 
     private void remplirTable(Thematique thematique) {
@@ -49,8 +56,24 @@ public class ThematiqueContenuControl extends TableView<Usage> {
         niveau.setCellValueFactory(new PropertyValueFactory<>("niveau"));
 
         // TODO colonne bouton et peut être favoris
+        //Bouton pour acceder au detail
+        TableColumn<Usage, String> detail = new TableColumn<>("Detail du Projet");
+        detail.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Usage, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Usage, String> p) {
+                return new ReadOnlyObjectWrapper("Cliquez Ici !");
+            }
+        });
+        detail.setOnEditStart(new EventHandler<TableColumn.CellEditEvent<Usage, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Usage, String> usageStringCellEditEvent) {
+                System.out.println(usageStringCellEditEvent.getRowValue().getNom() + " as été selectionné");
+                TabPane tabPane = parentTab.getTabPane();
+                tabPane.getTabs().add(new UsageOnglet(usageStringCellEditEvent.getRowValue()));
+            }
+        });
+        //Fin bouton acceder aux details
 
-        getColumns().addAll(List.of(nom, discipline, academie, niveau));
+        getColumns().addAll(List.of(nom, discipline, academie, niveau,detail));
 
         TypedQuery<Usage> query = LaunchApp.em.createNamedQuery("Usage.findByThematique", Usage.class);
         query.setParameter("thematique", thematique);

@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.contenu.usage;
 
+
 import fr.univ_amu.iut.components.LabelUsageControl;
 import fr.univ_amu.iut.model.Usage;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,7 @@ public class UsageContenuControl extends GridPane {
         }
         initialiserGridPane(usage);
     }
-
+//LabelUsageControl
     private void initialiserGridPane(Usage usage) {
         add(new LabelUsageControl("Intitulé"),0,0);
         add(new LabelUsageControl(usage.getNom()),1,0);
