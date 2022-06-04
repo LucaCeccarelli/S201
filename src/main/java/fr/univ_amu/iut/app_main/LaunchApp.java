@@ -20,7 +20,9 @@ public class LaunchApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         TabPane root = new LaunchAppControl();
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root,1080,720);
+        stage.setResizable(false);
+        stage.setScene(scene);
         stage.show();
     }
 }

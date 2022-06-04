@@ -8,10 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
@@ -28,12 +26,13 @@ public class ReseauxContenuControl extends BorderPane {
             throw new RuntimeException(exception);
         }
         France france = FranceBuilder.create()
-                //.backgroundColor(Color.web("#4aa9d7"))
-                //.fillColor(Color.web("#dcb36c"))
-                //.strokeColor(Color.web("#987028"))
-                //.hoverColor(Color.web("#fec47e"))
-                //.pressedColor(Color.web("#6cee85"))
-                //.selectedColor(Color.MAGENTA)
+                .backgroundColor(Color.web("#4aa9d7"))
+                .fillColor(Color.web("#dcb36c"))
+                .strokeColor(Color.web("#987028"))
+                .hoverColor(Color.web("#fec47e"))
+                .pressedColor(Color.web("#6cee85"))
+                .selectedColor(Color.MAGENTA)
+                .prefSize(400,400)
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
                     System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
@@ -44,7 +43,10 @@ public class ReseauxContenuControl extends BorderPane {
                 })
                 .selectionEnabled(true)
                 .build();
-        getChildren().add(france);
+        Pane pane = new Pane(france);
+        pane.setPrefSize(400,400);
+
+        setLeft(pane);
         setBackground(new Background(new BackgroundFill(france.getBackgroundColor(), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 }
