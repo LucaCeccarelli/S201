@@ -1,5 +1,6 @@
 package fr.univ_amu.iut;
 
+import fr.univ_amu.iut.contenu.accueil.AccueilContenuControl;
 import fr.univ_amu.iut.model.Acteur;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -13,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,7 +26,7 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
-public class JPAMain extends Application {
+public class JPAMain extends Tab {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestionUsagesPU");
     private static final EntityManager em = emf.createEntityManager();
     private TableView<Acteur> table;
@@ -38,19 +40,27 @@ public class JPAMain extends Application {
     private Button ajouter;
     private Button supprimer;
     private VBox racine;
-    @Override
-    public void start(Stage stage) {
+    //@Override
+    //public void start(Stage stage) {
+   //     initialiserTable();
+    //    initialiserBoutons();
+     //   initialiserRacine();
+
+        //Scene scene = new Scene(racine, 600, 400);
+        //stage.setScene(scene);
+        //stage.setTitle("Liste d'acteurs");
+        //stage.sizeToScene();
+        //stage.show();
+    //}
+
+    public JPAMain(){
+        setText("Admin");
+        setClosable(false);
         initialiserTable();
         initialiserBoutons();
         initialiserRacine();
-
-        Scene scene = new Scene(racine, 600, 400);
-        stage.setScene(scene);
-        stage.setTitle("Liste d'acteurs");
-        stage.sizeToScene();
-        stage.show();
+        setContent(racine);
     }
-
     private void initialiserRacine() {
         racine = new VBox();
         racine.setPadding(new Insets(10));
@@ -210,8 +220,8 @@ public class JPAMain extends Application {
         table.getFocusModel().focus(selectedRowIndex);
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+    //public static void main(String[] args) {
+        //launch(args);
+    //}
 
 }
