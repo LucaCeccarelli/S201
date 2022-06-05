@@ -14,10 +14,7 @@ import jakarta.persistence.TypedQuery;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -64,7 +61,7 @@ public class ReseauxContenuControl extends BorderPane {
                 .hoverColor(Color.web("#fec47e"))
                 .pressedColor(Color.web("#6cee85"))
                 .selectedColor(Color.YELLOW)
-                .prefSize(400,400)
+                .prefSize(750,800)
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
                     System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
@@ -95,8 +92,9 @@ public class ReseauxContenuControl extends BorderPane {
                 .selectionEnabled(true)
                 .build();
 
-        Pane pane = new Pane(france);
-        pane.setPrefSize(500,720);
+        ScrollPane pane = new ScrollPane();
+        pane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        pane.setContent(france);
         setLeft(pane);
 
         setBackground(new Background(new BackgroundFill(Color.web("#a3d7f7"), CornerRadii.EMPTY, Insets.EMPTY)));

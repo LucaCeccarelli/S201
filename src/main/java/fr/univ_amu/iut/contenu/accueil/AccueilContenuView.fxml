@@ -7,7 +7,7 @@
 
 <fx:root prefHeight="266.0" prefWidth="458.0" style="-fx-background-color: #a3d7f7;" type="javafx.scene.layout.BorderPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Label style="-fx-background-color: #c8f4fa; -fx-border-color: #62b4bf; -fx-font-size: 20;" text="Bienvenus sur l'Apllication de la DNE " BorderPane.alignment="CENTER">
+      <Label style="-fx-background-color: #c8f4fa; -fx-border-color: #62b4bf; -fx-font-size: 20;" text="Bienvenus sur l'Application de la DNE " BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" top="5.0" />
          </BorderPane.margin></Label>
