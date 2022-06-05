@@ -36,7 +36,6 @@ public class AcademieContenuControl extends TableView<Usage> {
         }
 
         remplirTable(academie);
-        super.setEditable(true);
     }
 
     private void remplirTable(Academie academie) {
