@@ -13,6 +13,11 @@ public class BoutonThematique extends Button {
         super.setWrapText(true);
     }
 
+    public BoutonThematique(String nom) {
+        super(nom);
+        super.setWrapText(true);
+    }
+
     public Thematique getThematique() {
         return thematique;
     }

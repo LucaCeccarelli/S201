@@ -31,6 +31,7 @@ public class ThematiquesContenuControl extends FlowPane {
             //Code de l'écouteur d'événement
             TabPane tabPane = parentTab.getTabPane();
             tabPane.getTabs().add(new ThematiqueOnglet(((BoutonThematique)event.getSource()).getThematique()));
+            tabPane.getSelectionModel().select(tabPane.getTabs().size()-1);
         }
     };
 
@@ -52,7 +53,7 @@ public class ThematiquesContenuControl extends FlowPane {
         TypedQuery<Thematique> query = LaunchApp.em.createNamedQuery("Thematique.findAll", Thematique.class);
         for (Thematique thematique : FXCollections.observableList(query.getResultList())) {
             BoutonThematique bt = new BoutonThematique(thematique);
-            bt.setPrefSize(200, 100);
+            bt.setPrefSize(175, 85);
             bt.setOnAction(ecouteur);
             bt.onMouseEnteredProperty().set((EventHandler<MouseEvent>) mouseEvent -> bt.setStyle("-fx-background-color: #62b4bf"));
             bt.onMouseExitedProperty().set((EventHandler<MouseEvent>) mouseEvent -> bt.setStyle("-fx-background-color: #c8f4fa"));

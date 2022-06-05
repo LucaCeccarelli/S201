@@ -1,6 +1,7 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.app_main.LaunchApp;
+import fr.univ_amu.iut.components.BoutonThematique;
 import fr.univ_amu.iut.model.Acteur;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -34,8 +35,8 @@ public class JPAActeur extends Tab {
     private TableColumn<Acteur, String> typeActeur;
     private ObservableList<Acteur> data;
     private HBox boutons;
-    private Button ajouter;
-    private Button supprimer;
+    private BoutonThematique ajouter;
+    private BoutonThematique supprimer;
     private VBox racine;
 
     public JPAActeur(){
@@ -62,12 +63,12 @@ public class JPAActeur extends Tab {
     }
 
     private void initialiserBoutonSupprimer() {
-        supprimer = new Button("Supprimer");
+        supprimer = new BoutonThematique("Supprimer");
         supprimer.setOnAction(this::supprimerActeur);
     }
 
     private void initialiserBoutonAjouter() {
-        ajouter = new Button("Ajouter");
+        ajouter = new BoutonThematique("Ajouter");
         ajouter.setOnAction(this::ajouterActeur);
     }
 

@@ -1,6 +1,7 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.app_main.LaunchApp;
+import fr.univ_amu.iut.components.BoutonThematique;
 import fr.univ_amu.iut.model.Academie;
 import fr.univ_amu.iut.model.Usage;
 import jakarta.persistence.EntityManager;
@@ -35,8 +36,8 @@ public class JPAUsage extends Tab {
     private TableColumn<Usage, Academie> academie;
     private ObservableList<Usage> data;
     private HBox boutons;
-    private Button ajouter;
-    private Button supprimer;
+    private BoutonThematique ajouter;
+    private BoutonThematique supprimer;
     private VBox racine;
 
     public JPAUsage(){
@@ -63,12 +64,12 @@ public class JPAUsage extends Tab {
     }
 
     private void initialiserBoutonSupprimer() {
-        supprimer = new Button("Supprimer");
+        supprimer = new BoutonThematique("Supprimer");
         supprimer.setOnAction(this::supprimerUsage);
     }
 
     private void initialiserBoutonAjouter() {
-        ajouter = new Button("Ajouter");
+        ajouter = new BoutonThematique("Ajouter");
         ajouter.setOnAction(this::ajouterUsage);
     }
 

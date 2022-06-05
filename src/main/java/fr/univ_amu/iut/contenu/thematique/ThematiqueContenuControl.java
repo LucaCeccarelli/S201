@@ -59,6 +59,7 @@ public class ThematiqueContenuControl extends TableView<Usage> {
             System.out.println(usageStringCellEditEvent.getRowValue().getNom() + " as été selectionné");
             TabPane tabPane = parentTab.getTabPane();
             tabPane.getTabs().add(new UsageOnglet(usageStringCellEditEvent.getRowValue()));
+            tabPane.getSelectionModel().select(tabPane.getTabs().size()-1);
         });
         //Fin bouton acceder aux details
 
