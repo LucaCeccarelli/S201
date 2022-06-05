@@ -4,7 +4,6 @@ package fr.univ_amu.iut.contenu.usage;
 import fr.univ_amu.iut.components.LabelUsageControl;
 import fr.univ_amu.iut.model.Usage;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.GridPane;
 

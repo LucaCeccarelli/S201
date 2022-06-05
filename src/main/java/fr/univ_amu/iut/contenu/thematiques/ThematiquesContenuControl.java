@@ -9,11 +9,15 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Control;
+import javafx.geometry.Insets;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
@@ -41,14 +45,17 @@ public class ThematiquesContenuControl extends FlowPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        setBackground(new Background(new BackgroundFill(Color.web("#a3d7f7"), new CornerRadii(0), Insets.EMPTY)));
     }
 
     public void initButtons(){
         TypedQuery<Thematique> query = LaunchApp.em.createNamedQuery("Thematique.findAll", Thematique.class);
         for (Thematique thematique : FXCollections.observableList(query.getResultList())) {
             BoutonThematique bt = new BoutonThematique(thematique);
-            bt.setPrefSize(120, 60);
+            bt.setPrefSize(200, 100);
             bt.setOnAction(ecouteur);
+            bt.onMouseEnteredProperty().set((EventHandler<MouseEvent>) mouseEvent -> bt.setStyle("-fx-background-color: #62b4bf"));
+            bt.onMouseExitedProperty().set((EventHandler<MouseEvent>) mouseEvent -> bt.setStyle("-fx-background-color: #c8f4fa"));
             getChildren().add(bt);
         }
     }

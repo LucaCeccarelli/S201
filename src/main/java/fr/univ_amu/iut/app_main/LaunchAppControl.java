@@ -17,10 +17,6 @@ public class LaunchAppControl extends TabPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-//        ListTemplateControl borderPane = new ListTemplateControl(new String[]{"Aa","bbb","ccc"});
-//        root.getTabs().add(new Tab("Contenu aaa borderPane ",borderPane));
-
-//        ThematiquesContenuControl flowPane = new ThematiquesContenuControl();
         getTabs().add(new AccueilOnglet());
 
     }

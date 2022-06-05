@@ -21,8 +21,10 @@ public class LaunchApp extends Application {
     public void start(Stage stage) throws Exception {
         TabPane root = new LaunchAppControl();
         Scene scene = new Scene(root,1280,720);
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("style.css").toExternalForm());
         stage.setResizable(false);
         stage.setScene(scene);
+        stage.setTitle("Application DNE");
         stage.show();
     }
 }

@@ -3,8 +3,6 @@
 <?import javafx.scene.control.*?>
 
 
-<fx:root xmlns="http://javafx.com/javafx"
-         xmlns:fx="http://javafx.com/fxml"
-         type="javafx.scene.control.Label">
+<fx:root minWidth="125.0" type="javafx.scene.control.Label" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
 
 </fx:root>
