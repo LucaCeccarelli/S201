@@ -54,18 +54,11 @@ public class AcademieContenuControl extends TableView<Usage> {
         // TODO colonne bouton et peut être favoris
         //Bouton pour acceder au detail
         TableColumn<Usage, String> detail = new TableColumn<>("Detail du Projet");
-        detail.setCellValueFactory(new Callback<CellDataFeatures<Usage, String>, ObservableValue<String>>() {
-            public ObservableValue<String> call(CellDataFeatures<Usage, String> p) {
-                return new ReadOnlyObjectWrapper("Cliquez Ici !");
-            }
-        });
-        detail.setOnEditStart(new EventHandler<TableColumn.CellEditEvent<Usage, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Usage, String> usageStringCellEditEvent) {
-                System.out.println(usageStringCellEditEvent.getRowValue().getNom() + " as été selectionné");
-                TabPane tabPane = parentTab.getTabPane();
-                tabPane.getTabs().add(new UsageOnglet(usageStringCellEditEvent.getRowValue()));
-            }
+        detail.setCellValueFactory(p -> new ReadOnlyObjectWrapper("Cliquez Ici !"));
+        detail.setOnEditStart(usageStringCellEditEvent -> {
+            System.out.println(usageStringCellEditEvent.getRowValue().getNom() + " as été selectionné");
+            TabPane tabPane = parentTab.getTabPane();
+            tabPane.getTabs().add(new UsageOnglet(usageStringCellEditEvent.getRowValue()));
         });
         //Fin bouton acceder aux details
 
