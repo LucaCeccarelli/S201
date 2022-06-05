@@ -6,29 +6,14 @@
 <?import javafx.scene.layout.*?>
 
 <fx:root prefHeight="266.0" prefWidth="458.0" style="-fx-background-color: #a3d7f7;" type="javafx.scene.layout.BorderPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <Label style="-fx-background-color: #c8f4fa; -fx-border-color: #62b4bf; -fx-font-size: 20;" text="Bienvenus sur l'Application de la DNE " BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="10.0" top="5.0" />
-         </BorderPane.margin></Label>
-   </center>
-   <top>
-      <ImageView fx:id="imageview" fitHeight="143.0" fitWidth="395.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <Image url="@ministere-education.png">
-         </Image>
-         <BorderPane.margin>
-            <Insets bottom="5.0" top="10.0" />
-         </BorderPane.margin>
-      </ImageView>
-   </top>
    <bottom>
       <HBox alignment="CENTER" prefHeight="39.0" prefWidth="458.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#startupAdmin" style="-fx-background-color: #c8f4fa;" text="Acceder au menu d'administration">
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#startupTabs" style="-fx-background-color: #c8f4fa; -fx-background-radius: 1;" text="Acceder à l'application">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin></Button>
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#startupTabs" style="-fx-background-color: #c8f4fa; -fx-background-radius: 1;" text="Acceder à l'application">
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#startupAdmin" style="-fx-background-color: #c8f4fa;" text="Acceder au menu d'administration">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin></Button>
@@ -38,4 +23,19 @@
          </padding>
       </HBox>
    </bottom>
+   <top>
+      <Label style="-fx-background-color: #c8f4fa; -fx-border-color: #62b4bf; -fx-font-size: 20;" text="Bienvenus sur l'Application de la DNE " BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="10.0" />
+         </BorderPane.margin></Label>
+   </top>
+   <center>
+      <ImageView fx:id="imageview" fitHeight="143.0" fitWidth="395.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <Image url="@../../../../../../resources/ministere-education.png">
+         </Image>
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </center>
 </fx:root>

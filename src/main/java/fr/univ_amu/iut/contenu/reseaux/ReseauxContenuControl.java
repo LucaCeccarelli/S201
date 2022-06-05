@@ -61,14 +61,14 @@ public class ReseauxContenuControl extends BorderPane {
                 .hoverColor(Color.web("#fec47e"))
                 .pressedColor(Color.web("#6cee85"))
                 .selectedColor(Color.YELLOW)
-                .prefSize(750,800)
+                .prefSize(700,800)
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
                     System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
 
                     TabPane tabPane = this.parentTab.getTabPane();
                     tabPane.getTabs().add(new AcademieOnglet(academiePath.getAcademie()));
-
+                    tabPane.getSelectionModel().select(tabPane.getTabs().size()-1);
                 })
                 .mouseEnterHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
@@ -91,7 +91,6 @@ public class ReseauxContenuControl extends BorderPane {
                 })
                 .selectionEnabled(true)
                 .build();
-
         ScrollPane pane = new ScrollPane();
         pane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         pane.setContent(france);
@@ -106,7 +105,7 @@ public class ReseauxContenuControl extends BorderPane {
         btParTheme = new HashMap<Thematique, Button>();
         for (Thematique thematique : FXCollections.observableList(query.getResultList())) {
             Button bt = new Button(thematique.getNom());
-            bt.setPrefSize(150, 70);
+            bt.setPrefSize(125, 60);
             bt.setBackground(Background.fill(Color.web("#c8f4fa")));
             bt.setWrapText(true);
             flowPane.getChildren().add(bt);
@@ -120,8 +119,8 @@ public class ReseauxContenuControl extends BorderPane {
         themesParAca.setTop(academieActuelle =new LabelUsageControl("Liste des thématiques disponible dans l'Academie de"));
         academieActuelle.setWrapText(true);
         academieActuelle.setFont(new Font(15));
-        themesParAca.prefWidth(500);
-        academieActuelle.setPrefSize(465,80);
+        themesParAca.prefWidth(700);
+        academieActuelle.setPrefSize(550,80);
 
         setRight(themesParAca);
     }
