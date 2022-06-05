@@ -1,6 +1,7 @@
 package fr.univ_amu.iut.contenu.reseaux;
 
 import fr.univ_amu.iut.app_main.LaunchApp;
+import fr.univ_amu.iut.components.LabelUsageControl;
 import fr.univ_amu.iut.contenu.academie.AcademieOnglet;
 import fr.univ_amu.iut.dao.jpa.DAOUsageJPA;
 import fr.univ_amu.iut.model.Academie;
@@ -19,6 +20,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -56,12 +58,12 @@ public class ReseauxContenuControl extends BorderPane {
 
     private void initFrance(){
         France france = FranceBuilder.create()
-                .backgroundColor(Color.web("#4aa9d7"))
+                .backgroundColor(Color.web("#a3d7f7"))
                 .fillColor(Color.web("#dcb36c"))
                 .strokeColor(Color.web("#987028"))
                 .hoverColor(Color.web("#fec47e"))
                 .pressedColor(Color.web("#6cee85"))
-                .selectedColor(Color.MAGENTA)
+                .selectedColor(Color.YELLOW)
                 .prefSize(400,400)
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
@@ -74,10 +76,10 @@ public class ReseauxContenuControl extends BorderPane {
                 .mouseEnterHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
                     System.out.println("On vient de passer sur l'"+academiePath.getAcademie().getNom());
-                    academieActuelle.setText("Liste des thématiques disponibles\ndans l'"+academiePath.getAcademie().getNom());
+                    academieActuelle.setText("Liste des thématiques disponibles dans l'"+academiePath.getAcademie().getNom());
                     if(usageParAcademie.get(academiePath.getAcademie().getNom()) != null){
                         for(Usage usage : usageParAcademie.get(academiePath.getAcademie().getNom())){
-                            btParTheme.get(usage.getThematique()).setBackground(Background.fill(Color.LIGHTGREEN));
+                            btParTheme.get(usage.getThematique()).setBackground(Background.fill(Color.web("#62b4bf")));
                         }
                     }
                 })
@@ -86,7 +88,7 @@ public class ReseauxContenuControl extends BorderPane {
                     System.out.println("On vient de quitter l'"+academiePath.getAcademie().getNom());
                     if(usageParAcademie.get(academiePath.getAcademie().getNom()) != null) {
                         for (Usage usage : usageParAcademie.get(academiePath.getAcademie().getNom())) {
-                            btParTheme.get(usage.getThematique()).setBackground(Background.fill(Color.LIGHTBLUE));
+                            btParTheme.get(usage.getThematique()).setBackground(Background.fill(Color.web("#c8f4fa")));
                         }
                     }
                 })
@@ -94,10 +96,10 @@ public class ReseauxContenuControl extends BorderPane {
                 .build();
 
         Pane pane = new Pane(france);
-        pane.setPrefSize(650,720);
+        pane.setPrefSize(500,720);
         setLeft(pane);
 
-        setBackground(new Background(new BackgroundFill(france.getBackgroundColor(), CornerRadii.EMPTY, Insets.EMPTY)));
+        setBackground(new Background(new BackgroundFill(Color.web("#a3d7f7"), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     private void initDispButtons(){
@@ -106,17 +108,22 @@ public class ReseauxContenuControl extends BorderPane {
         btParTheme = new HashMap<Thematique, Button>();
         for (Thematique thematique : FXCollections.observableList(query.getResultList())) {
             Button bt = new Button(thematique.getNom());
-            bt.setPrefSize(120, 60);
-            bt.setBackground(Background.fill(Color.LIGHTBLUE));
+            bt.setPrefSize(150, 70);
+            bt.setBackground(Background.fill(Color.web("#c8f4fa")));
+            bt.setWrapText(true);
             flowPane.getChildren().add(bt);
             btParTheme.put(thematique,bt);
         }
         flowPane.setHgap(10);
         flowPane.setVgap(10);
+        flowPane.setPrefSize(500,600);
         BorderPane themesParAca = new BorderPane();
         themesParAca.setCenter(flowPane);
-        themesParAca.setTop(academieActuelle =new Label("Liste des thématiques disponibles\ndans l'Academie de"));
-        academieActuelle.setPrefSize(400,80);
+        themesParAca.setTop(academieActuelle =new LabelUsageControl("Liste des thématiques disponible dans l'Academie de"));
+        academieActuelle.setWrapText(true);
+        academieActuelle.setFont(new Font(15));
+        themesParAca.prefWidth(500);
+        academieActuelle.setPrefSize(465,80);
 
         setRight(themesParAca);
     }

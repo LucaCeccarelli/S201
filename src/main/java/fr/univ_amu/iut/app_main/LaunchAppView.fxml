@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import fr.univ_amu.iut.contenu.accueil.AccueilOnglet?>
 <fx:root xmlns:fx="http://javafx.com/fxml"
-         type="javafx.scene.control.TabPane">
+         type="javafx.scene.control.TabPane"
+         maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="ALL_TABS" tabMaxHeight="35.0" tabMaxWidth="200.0" tabMinHeight="35.0" tabMinWidth="25.0">
 
 
 </fx:root>

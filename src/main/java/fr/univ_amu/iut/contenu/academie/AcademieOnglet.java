@@ -1,7 +1,5 @@
 package fr.univ_amu.iut.contenu.academie;
 
-import fr.univ_amu.iut.contenu.reseaux.ReseauxContenuControl;
-import fr.univ_amu.iut.contenu.thematique.ThematiqueContenuControl;
 import fr.univ_amu.iut.model.Academie;
 import javafx.geometry.Insets;
 import javafx.scene.control.Tab;

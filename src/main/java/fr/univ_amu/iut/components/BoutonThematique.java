@@ -10,6 +10,7 @@ public class BoutonThematique extends Button {
     public BoutonThematique(Thematique thematique) {
         super(thematique.getNom());
         this.thematique = thematique;
+        super.setWrapText(true);
     }
 
     public Thematique getThematique() {
