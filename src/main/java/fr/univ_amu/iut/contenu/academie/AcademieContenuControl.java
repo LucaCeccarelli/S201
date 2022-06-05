@@ -42,14 +42,6 @@ public class AcademieContenuControl extends TableView<Usage> {
         TableColumn<Usage, String> nom = new TableColumn<>("Intitulé");
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
 
-        nom.setOnEditStart(new EventHandler<TableColumn.CellEditEvent<Usage, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Usage, String> usageStringCellEditEvent) {
-                usageStringCellEditEvent.getRowValue();
-                System.out.println("hello");
-            }
-        });
-
         TableColumn<Usage, Discipline> discipline = new TableColumn<>("Discipline");
         discipline.setCellValueFactory(new PropertyValueFactory<>("discipline"));
 
