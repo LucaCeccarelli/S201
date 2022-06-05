@@ -1,6 +1,7 @@
 package fr.univ_amu.iut.contenu.accueil;
 
-import fr.univ_amu.iut.JPAMain;
+import fr.univ_amu.iut.JPAActeur;
+import fr.univ_amu.iut.JPAUsage;
 import fr.univ_amu.iut.contenu.reseaux.ReseauxOnglet;
 import fr.univ_amu.iut.contenu.thematiques.ThematiquesOnglet;
 import javafx.event.ActionEvent;
@@ -44,7 +45,8 @@ public class AccueilContenuControl extends BorderPane {
     @FXML
     public void startupAdmin(ActionEvent actionEvent){
         TabPane tabPane = parentTab.getTabPane();
-        tabPane.getTabs().add(new JPAMain());
+        tabPane.getTabs().add(new JPAActeur());
+        tabPane.getTabs().add(new JPAUsage());
         tabPane.getTabs().remove(parentTab);
     }
 

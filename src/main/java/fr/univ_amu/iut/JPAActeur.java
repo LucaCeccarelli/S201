@@ -1,18 +1,16 @@
 package fr.univ_amu.iut;
 
-import fr.univ_amu.iut.contenu.accueil.AccueilContenuControl;
+import fr.univ_amu.iut.app_main.LaunchApp;
 import fr.univ_amu.iut.model.Acteur;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
@@ -22,13 +20,12 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.util.List;
 
-public class JPAMain extends Tab {
-    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestionUsagesPU");
-    private static final EntityManager em = emf.createEntityManager();
+public class JPAActeur extends Tab {
+    private static final EntityManagerFactory emf = LaunchApp.emf;
+    private static final EntityManager em = LaunchApp.em;
     private TableView<Acteur> table;
     private TableColumn<Acteur, String> nom;
     private TableColumn<Acteur, Integer> id;
@@ -40,21 +37,9 @@ public class JPAMain extends Tab {
     private Button ajouter;
     private Button supprimer;
     private VBox racine;
-    //@Override
-    //public void start(Stage stage) {
-   //     initialiserTable();
-    //    initialiserBoutons();
-     //   initialiserRacine();
 
-        //Scene scene = new Scene(racine, 600, 400);
-        //stage.setScene(scene);
-        //stage.setTitle("Liste d'acteurs");
-        //stage.sizeToScene();
-        //stage.show();
-    //}
-
-    public JPAMain(){
-        setText("Admin");
+    public JPAActeur(){
+        setText("Administration Acteur");
         setClosable(false);
         initialiserTable();
         initialiserBoutons();
@@ -219,9 +204,5 @@ public class JPAMain extends Tab {
         table.getSelectionModel().select(selectedRowIndex);
         table.getFocusModel().focus(selectedRowIndex);
     }
-
-    //public static void main(String[] args) {
-        //launch(args);
-    //}
 
 }
