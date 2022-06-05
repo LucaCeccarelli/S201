@@ -39,7 +39,6 @@ public class ThematiqueContenuControl extends TableView<Usage> {
         }
 
         remplirTable(thematique);
-        super.setEditable(true);
     }
 
     private void remplirTable(Thematique thematique) {
