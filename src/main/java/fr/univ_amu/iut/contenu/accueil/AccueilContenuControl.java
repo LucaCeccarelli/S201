@@ -35,17 +35,34 @@ public class AccueilContenuControl extends BorderPane {
     @FXML
     public void startupTabs(ActionEvent actionEvent) {
         TabPane tabPane = parentTab.getTabPane();
-        tabPane.getTabs().add(thematiquesOnglet);
-        tabPane.getTabs().add(reseauxOnglet);
-        tabPane.getTabs().remove(parentTab);
+        if(tabPane.getTabs().size() == 1){
+            tabPane.getTabs().add(thematiquesOnglet);
+            tabPane.getTabs().add(reseauxOnglet);
+        }else{
+            while(tabPane.getTabs().size()>1){
+                tabPane.getTabs().remove(tabPane.getTabs().size()-1);
+            }
+            tabPane.getTabs().add(thematiquesOnglet);
+            tabPane.getTabs().add(reseauxOnglet);
+        }
+        tabPane.getSelectionModel().select(tabPane.getTabs().size()-2);
     }
 
     @FXML
     public void startupAdmin(ActionEvent actionEvent){
         TabPane tabPane = parentTab.getTabPane();
-        tabPane.getTabs().add(jpaActeur);
-        tabPane.getTabs().add(jpaUsage);
-        tabPane.getTabs().remove(parentTab);
+
+        if(tabPane.getTabs().size() == 1){
+            tabPane.getTabs().add(jpaActeur);
+            tabPane.getTabs().add(jpaUsage);
+        }else {
+            while (tabPane.getTabs().size() > 1) {
+                tabPane.getTabs().remove(tabPane.getTabs().size() - 1);
+            }
+            tabPane.getTabs().add(jpaActeur);
+            tabPane.getTabs().add(jpaUsage);
+        }
+        tabPane.getSelectionModel().select(tabPane.getTabs().size()-2);
     }
 
 }
