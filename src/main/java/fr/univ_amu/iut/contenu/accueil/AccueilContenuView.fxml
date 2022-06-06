@@ -24,7 +24,7 @@
       </HBox>
    </bottom>
    <top>
-      <Label style="-fx-background-color: #c8f4fa; -fx-border-color: #62b4bf; -fx-font-size: 20;" text="Bienvenus sur l'Application de la DNE " BorderPane.alignment="CENTER">
+      <Label style="-fx-background-color: #c8f4fa; -fx-border-color: #62b4bf; -fx-font-size: 20;" text="Bienvenue sur l'Application de la DNE " BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="5.0" top="10.0" />
          </BorderPane.margin></Label>
