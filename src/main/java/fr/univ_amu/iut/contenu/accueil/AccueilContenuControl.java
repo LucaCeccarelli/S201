@@ -1,7 +1,7 @@
 package fr.univ_amu.iut.contenu.accueil;
 
-import fr.univ_amu.iut.JPAActeur;
-import fr.univ_amu.iut.JPAUsage;
+import fr.univ_amu.iut.contenu.administration.JPAActeur;
+import fr.univ_amu.iut.contenu.administration.JPAUsage;
 import fr.univ_amu.iut.contenu.reseaux.ReseauxOnglet;
 import fr.univ_amu.iut.contenu.thematiques.ThematiquesOnglet;
 import javafx.event.ActionEvent;

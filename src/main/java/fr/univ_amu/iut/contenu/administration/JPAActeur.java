@@ -1,9 +1,8 @@
-package fr.univ_amu.iut;
+package fr.univ_amu.iut.contenu.administration;
 
 import fr.univ_amu.iut.app_main.LaunchApp;
 import fr.univ_amu.iut.components.BoutonThematique;
-import fr.univ_amu.iut.model.Academie;
-import fr.univ_amu.iut.model.Usage;
+import fr.univ_amu.iut.model.Acteur;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -25,23 +24,23 @@ import javafx.scene.layout.VBox;
 
 import java.util.List;
 
-public class JPAUsage extends Tab {
+public class JPAActeur extends Tab {
     private static final EntityManagerFactory emf = LaunchApp.emf;
     private static final EntityManager em = LaunchApp.em;
-    private TableView<Usage> table;
-    private TableColumn<Usage, String> nom;
-    private TableColumn<Usage, Integer> id;
-    private TableColumn<Usage, String> description;
-    private TableColumn<Usage, String> niveau;
-    private TableColumn<Usage, Academie> academie;
-    private ObservableList<Usage> data;
+    private TableView<Acteur> table;
+    private TableColumn<Acteur, String> nom;
+    private TableColumn<Acteur, Integer> id;
+    private TableColumn<Acteur, String> prenom;
+    private TableColumn<Acteur, String> ville;
+    private TableColumn<Acteur, String> typeActeur;
+    private ObservableList<Acteur> data;
     private HBox boutons;
     private BoutonThematique ajouter;
     private BoutonThematique supprimer;
     private VBox racine;
 
-    public JPAUsage(){
-        setText("Administration Usage");
+    public JPAActeur(){
+        setText("Administration Acteur");
         setClosable(false);
         initialiserTable();
         initialiserBoutons();
@@ -65,12 +64,12 @@ public class JPAUsage extends Tab {
 
     private void initialiserBoutonSupprimer() {
         supprimer = new BoutonThematique("Supprimer");
-        supprimer.setOnAction(this::supprimerUsage);
+        supprimer.setOnAction(this::supprimerActeur);
     }
 
     private void initialiserBoutonAjouter() {
         ajouter = new BoutonThematique("Ajouter");
-        ajouter.setOnAction(this::ajouterUsage);
+        ajouter.setOnAction(this::ajouterActeur);
     }
 
     private void initialiserTable() {
@@ -86,98 +85,98 @@ public class JPAUsage extends Tab {
         VBox.setVgrow(table, Priority.ALWAYS);
     }
 
-    private static TableColumn<Usage, Integer> initialiserColonneId() {
-        TableColumn<Usage, Integer> code = new TableColumn<>("Identifiant");
+    private static TableColumn<Acteur, Integer> initialiserColonneId() {
+        TableColumn<Acteur, Integer> code = new TableColumn<>("Identifiant");
         code.setCellValueFactory(new PropertyValueFactory<>("id"));
         return code;
     }
 
-    private static TableColumn<Usage, String> initialiserColonneNom() {
-        TableColumn<Usage, String> nom = new TableColumn<>("Nom Usage");
+    private static TableColumn<Acteur, String> initialiserColonneNom() {
+        TableColumn<Acteur, String> nom = new TableColumn<>("Nom");
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         nom.setCellFactory(TextFieldTableCell.forTableColumn());
         nom.setOnEditCommit(event -> {
             int index = event.getTablePosition().getRow();
-            Usage Usage = event.getTableView().getItems().get(index);
+            Acteur acteur = event.getTableView().getItems().get(index);
             em.getTransaction().begin();
-            Usage.setNom(event.getNewValue());
+            acteur.setNom(event.getNewValue());
             em.getTransaction().commit();
         });
         return nom;
     }
 
-    private static TableColumn<Usage, String> initialiserColonneDescprition() {
-        TableColumn<Usage, String> description = new TableColumn<>("Description");
-        description.setCellValueFactory(new PropertyValueFactory<>("description"));
-        description.setCellFactory(TextFieldTableCell.forTableColumn());
+    private static TableColumn<Acteur, String> initialiserColonnePrenom() {
+        TableColumn<Acteur, String> prenom = new TableColumn<>("Prénom");
+        prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        prenom.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        description.setOnEditCommit(event -> {
+        prenom.setOnEditCommit(event -> {
             int index = event.getTablePosition().getRow();
-            Usage Usage = event.getTableView().getItems().get(index);
+            Acteur acteur = event.getTableView().getItems().get(index);
             em.getTransaction().begin();
-            Usage.setDescription(event.getNewValue());
+            acteur.setPrenom(event.getNewValue());
             em.getTransaction().commit();
         });
 
-        return description;
+        return prenom;
     }
 
-    private static TableColumn<Usage, String> initialiserColonneNiveau() {
-        TableColumn<Usage, String> niveau = new TableColumn<>("Niveau");
-        niveau.setCellValueFactory(new PropertyValueFactory<>("niveau"));
-        niveau.setCellFactory(TextFieldTableCell.forTableColumn());
-        niveau.setOnEditCommit(event -> {
+    private static TableColumn<Acteur, String> initialiserColonneVille() {
+        TableColumn<Acteur, String> ville = new TableColumn<>("Ville");
+        ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
+        ville.setCellFactory(TextFieldTableCell.forTableColumn());
+        ville.setOnEditCommit(event -> {
             int index = event.getTablePosition().getRow();
-            Usage Usage = event.getTableView().getItems().get(index);
+            Acteur acteur = event.getTableView().getItems().get(index);
             em.getTransaction().begin();
-            Usage.setNiveau(event.getNewValue());
+            acteur.setVille(event.getNewValue());
             em.getTransaction().commit();
         });
-        return niveau;
+        return ville;
     }
 
-    private TableColumn<Usage, Academie> initialiserColonneCodeAca() {
-        TableColumn<Usage, Academie> academie = new TableColumn<>("Code Academique");
-        academie.setCellValueFactory(new PropertyValueFactory<>("academie"));
-        //academie.setCellFactory(TextFieldTableCell.forTableColumn());
-        academie.setOnEditCommit(event -> {
+    private TableColumn<Acteur, String> initialiserColonneTypeActeur() {
+        TableColumn<Acteur, String> typeActeur = new TableColumn<>("Type d'acteur");
+        typeActeur.setCellValueFactory(new PropertyValueFactory<>("typeActeur"));
+        typeActeur.setCellFactory(TextFieldTableCell.forTableColumn());
+        typeActeur.setOnEditCommit(event -> {
             int index = event.getTablePosition().getRow();
-            Usage Usage = event.getTableView().getItems().get(index);
+            Acteur acteur = event.getTableView().getItems().get(index);
             em.getTransaction().begin();
-            Usage.setAcademie(event.getNewValue());
+            acteur.setTypeActeur(event.getNewValue());
             em.getTransaction().commit();
         });
-        return academie;
+        return typeActeur;
     }
 
     private void initialiserColonnes() {
         id = initialiserColonneId();
         nom = initialiserColonneNom();
-        description = initialiserColonneDescprition();
-        niveau = initialiserColonneNiveau();
-        academie = initialiserColonneCodeAca();
+        prenom = initialiserColonnePrenom();
+        ville = initialiserColonneVille();
+        typeActeur = initialiserColonneTypeActeur();
     }
 
     private void insererColonnes() {
-        table.getColumns().addAll(List.of(id, nom, description, niveau, academie));
+        table.getColumns().addAll(List.of(id, nom, prenom, ville, typeActeur));
     }
 
     private void remplirDonnees() {
-        data = listerUsages();
+        data = listerActeurs();
         table.setItems(data);
     }
 
-    private ObservableList<Usage> listerUsages() {
-        TypedQuery<Usage> query = em.createNamedQuery("Usage.findAll", Usage.class);
+    private ObservableList<Acteur> listerActeurs() {
+        TypedQuery<Acteur> query = em.createNamedQuery("Acteur.findAll", Acteur.class);
         return FXCollections.observableList(query.getResultList());
     }
 
-    private void ajouterUsage(ActionEvent event) {
-        Usage Usage = new Usage();
+    private void ajouterActeur(ActionEvent event) {
+        Acteur acteur = new Acteur();
         em.getTransaction().begin();
-        em.persist(Usage);
+        em.persist(acteur);
         em.getTransaction().commit();
-        data.add(Usage);
+        data.add(acteur);
 
         int rowIndex = data.size() - 1;
         table.requestFocus();
@@ -186,7 +185,7 @@ public class JPAUsage extends Tab {
         table.getFocusModel().focus(rowIndex);
     }
 
-    private void supprimerUsage(ActionEvent event) {
+    private void supprimerActeur(ActionEvent event) {
         if (table.getItems().size() == 0) return;
 
         em.getTransaction().begin();
@@ -208,4 +207,3 @@ public class JPAUsage extends Tab {
     }
 
 }
-
