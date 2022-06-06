@@ -1,19 +1,17 @@
 package fr.univ_amu.iut.contenu.administration;
 
-import fr.univ_amu.iut.app_main.LaunchApp;
+import fr.univ_amu.iut.LaunchApp;
 import fr.univ_amu.iut.components.BoutonThematique;
 import fr.univ_amu.iut.model.Academie;
 import fr.univ_amu.iut.model.Usage;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;

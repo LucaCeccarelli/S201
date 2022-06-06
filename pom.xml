@@ -164,7 +164,7 @@
                 <configuration>
                     <jlinkImageName>app</jlinkImageName>
                     <launcher>launcher</launcher>
-                    <mainClass>sae201/fr.univ_amu.iut.FranceMain</mainClass>
+                    <mainClass>sae201/fr.univ_amu.iut.LaunchApp</mainClass>
                 </configuration>
             </plugin>
 

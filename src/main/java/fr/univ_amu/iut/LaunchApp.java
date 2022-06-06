@@ -1,5 +1,6 @@
-package fr.univ_amu.iut.app_main;
+package fr.univ_amu.iut;
 
+import fr.univ_amu.iut.app_main.LaunchAppControl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

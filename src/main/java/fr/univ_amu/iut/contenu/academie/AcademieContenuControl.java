@@ -1,6 +1,6 @@
 package fr.univ_amu.iut.contenu.academie;
 
-import fr.univ_amu.iut.app_main.LaunchApp;
+import fr.univ_amu.iut.LaunchApp;
 import fr.univ_amu.iut.contenu.usage.UsageOnglet;
 import fr.univ_amu.iut.model.*;
 import jakarta.persistence.TypedQuery;
