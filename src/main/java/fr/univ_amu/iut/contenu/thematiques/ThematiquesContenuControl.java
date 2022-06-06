@@ -1,6 +1,6 @@
 package fr.univ_amu.iut.contenu.thematiques;
 
-import fr.univ_amu.iut.app_main.LaunchApp;
+import fr.univ_amu.iut.LaunchApp;
 import fr.univ_amu.iut.components.BoutonThematique;
 import fr.univ_amu.iut.contenu.thematique.ThematiqueOnglet;
 import fr.univ_amu.iut.model.Thematique;

@@ -1,6 +1,6 @@
 package fr.univ_amu.iut.contenu.reseaux;
 
-import fr.univ_amu.iut.app_main.LaunchApp;
+import fr.univ_amu.iut.LaunchApp;
 import fr.univ_amu.iut.components.LabelUsageControl;
 import fr.univ_amu.iut.contenu.academie.AcademieOnglet;
 import fr.univ_amu.iut.dao.jpa.DAOUsageJPA;
