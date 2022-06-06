@@ -9,11 +9,11 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="39.0" prefWidth="458.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#startupTabs" style="-fx-background-color: #c8f4fa; -fx-background-radius: 1;" text="Acceder à l'application">
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#startupTabs" style="-fx-background-color: #c8f4fa; -fx-background-radius: 1;" text="Accéder à l'application">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin></Button>
-            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#startupAdmin" style="-fx-background-color: #c8f4fa;" text="Acceder au menu d'administration">
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#startupAdmin" style="-fx-background-color: #c8f4fa;" text="Accéder au menu d'administration">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin></Button>
@@ -30,8 +30,8 @@
          </BorderPane.margin></Label>
    </top>
    <center>
-      <ImageView fx:id="imageview" fitHeight="143.0" fitWidth="395.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <Image url="@../../../../../../resources/ministere-education.png">
+      <ImageView fx:id="imageview" fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <Image url="ministere-education.png">
          </Image>
          <BorderPane.margin>
             <Insets bottom="5.0" top="5.0" />
