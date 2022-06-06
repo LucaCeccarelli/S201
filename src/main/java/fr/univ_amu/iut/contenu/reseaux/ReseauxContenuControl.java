@@ -64,7 +64,7 @@ public class ReseauxContenuControl extends BorderPane {
                 .prefSize(700,800)
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
-                    System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
+//                    System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
 
                     TabPane tabPane = this.parentTab.getTabPane();
                     tabPane.getTabs().add(new AcademieOnglet(academiePath.getAcademie()));
@@ -72,7 +72,7 @@ public class ReseauxContenuControl extends BorderPane {
                 })
                 .mouseEnterHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
-                    System.out.println("On vient de passer sur l'"+academiePath.getAcademie().getNom());
+//                    System.out.println("On vient de passer sur l'"+academiePath.getAcademie().getNom());
                     academieActuelle.setText("Liste des thématiques disponibles dans l'"+academiePath.getAcademie().getNom());
                     if(usageParAcademie.get(academiePath.getAcademie().getNom()) != null){
                         for(Usage usage : usageParAcademie.get(academiePath.getAcademie().getNom())){
