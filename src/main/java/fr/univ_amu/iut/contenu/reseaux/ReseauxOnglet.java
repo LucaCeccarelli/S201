@@ -7,5 +7,6 @@ public class ReseauxOnglet extends Tab {
         setText("Réseaux");
         setClosable(false);
         setContent(new ReseauxContenuControl(this));
+        setId("ongletReseaux");
     }
 }

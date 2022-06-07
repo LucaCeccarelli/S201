@@ -18,6 +18,7 @@ public class LaunchApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         TabPane root = new LaunchAppControl();
+        root.setId("tabPane");
         Scene scene = new Scene(root,1280,720);
         scene.getStylesheets().add(getClass().getClassLoader().getResource("style.css").toExternalForm());
         stage.setResizable(false);

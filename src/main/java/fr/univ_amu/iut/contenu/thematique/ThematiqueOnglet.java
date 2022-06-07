@@ -18,6 +18,7 @@ public class ThematiqueOnglet extends Tab {
         table.setEditable(true);
         racine.getChildren().addAll(table);
         setContent(racine);
+        setId("ongletThematique");
     }
 
 }

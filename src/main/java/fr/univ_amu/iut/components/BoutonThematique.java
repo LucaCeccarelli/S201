@@ -11,6 +11,7 @@ public class BoutonThematique extends Button {
         super(thematique.getNom());
         this.thematique = thematique;
         super.setWrapText(true);
+        super.setId("boutonThematique");
     }
 
     public BoutonThematique(String nom) {

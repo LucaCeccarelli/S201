@@ -45,6 +45,7 @@ public class JPAActeur extends Tab {
         initialiserBoutons();
         initialiserRacine();
         setContent(racine);
+        setId("jpaActeur");
     }
 
     private static TableColumn<Acteur, Integer> initialiserColonneId() {

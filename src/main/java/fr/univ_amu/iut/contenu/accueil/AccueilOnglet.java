@@ -8,6 +8,7 @@ public class AccueilOnglet extends Tab {
         setText("Onglet Accueil");
         setClosable(false);
         setContent(new AccueilContenuControl(this));
+        setId("ongletAccueil");
     }
 
 }
