@@ -8,6 +8,7 @@ public class ThematiquesOnglet extends Tab {
         setText("Thématiques");
         setClosable(false);
         setContent(new ThematiquesContenuControl(this));
+        setId("ongletThematiques");
     }
 
 }

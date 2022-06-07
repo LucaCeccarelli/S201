@@ -49,6 +49,7 @@ public class JPAUsage extends Tab {
         initialiserBoutons();
         initialiserRacine();
         setContent(racine);
+        setId("jpaUsage");
     }
 
     private static TableColumn<Usage, Integer> initialiserColonneId() {

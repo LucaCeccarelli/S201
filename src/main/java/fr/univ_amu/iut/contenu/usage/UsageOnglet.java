@@ -20,5 +20,6 @@ public class UsageOnglet extends Tab {
         racine.setCenter(contenu);
         racine.setBackground(new Background(new BackgroundFill(Color.web("#a3d7f7"), new CornerRadii(0), Insets.EMPTY)));
         setContent(racine);
+        setId("ongletUsage");
     }
 }

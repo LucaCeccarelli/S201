@@ -9,11 +9,11 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="39.0" prefWidth="458.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#startupTabs" style="-fx-background-color: #c8f4fa; -fx-background-radius: 1;" text="Accéder à l'application">
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#startupTabs" style="-fx-background-color: #c8f4fa; -fx-background-radius: 1;" text="Accéder à l'application" fx:id="accesApplication">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin></Button>
-            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#startupAdmin" style="-fx-background-color: #c8f4fa;" text="Accéder au menu d'administration">
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#startupAdmin" style="-fx-background-color: #c8f4fa;" text="Accéder au menu d'administration" fx:id="accesAdmin">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin></Button>

@@ -18,6 +18,7 @@ public class AcademieOnglet extends Tab {
         table.setEditable(true);
         racine.getChildren().addAll(table);
         setContent(racine);
+        setId("ongletAcademie");
     }
 
 }
