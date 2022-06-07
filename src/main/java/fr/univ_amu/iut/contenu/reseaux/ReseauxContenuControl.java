@@ -3,6 +3,8 @@ package fr.univ_amu.iut.contenu.reseaux;
 import fr.univ_amu.iut.LaunchApp;
 import fr.univ_amu.iut.components.LabelUsageControl;
 import fr.univ_amu.iut.contenu.academie.AcademieOnglet;
+import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dao.factory.DAOType;
 import fr.univ_amu.iut.dao.jpa.DAOUsageJPA;
 import fr.univ_amu.iut.model.Academie;
 import fr.univ_amu.iut.model.Thematique;
@@ -24,12 +26,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ReseauxContenuControl extends BorderPane {
+
     private Tab parentTab;
     private France france;
     private FlowPane flowPane;
     private Label academieActuelle;
     private HashMap<String, List<Usage>> usageParAcademie;
     private HashMap<Thematique, Button> btParTheme;
+
     public ReseauxContenuControl(Tab parentTab){
         this.parentTab = parentTab;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReseauxContenuView.fxml"));
@@ -48,13 +52,13 @@ public class ReseauxContenuControl extends BorderPane {
 
     private void initHashMap(){
         usageParAcademie= new HashMap<String, List<Usage>>();
-        for(Academie academie : FXCollections.observableList(LaunchApp.em.createNamedQuery("Academie.findAll", Academie.class).getResultList())){
-            usageParAcademie.put(academie.getNom(),new DAOUsageJPA(LaunchApp.em).findByAcademie(academie));
+        for(Academie academie : FXCollections.observableList(DAOFactoryProducer.getFactory(DAOType.JPA).createDAOAcademie().findAll())){
+            usageParAcademie.put(academie.getNom(),DAOFactoryProducer.getFactory(DAOType.JPA).createDAOUsage().findByAcademie(academie));
         }
     }
 
     private void initFrance(){
-        France france = FranceBuilder.create()
+         france = FranceBuilder.create()
                 .backgroundColor(Color.web("#a3d7f7"))
                 .fillColor(Color.web("#dcb36c"))
                 .strokeColor(Color.web("#987028"))
@@ -64,7 +68,7 @@ public class ReseauxContenuControl extends BorderPane {
                 .prefSize(700,800)
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
-//                    System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
+                    System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
 
                     TabPane tabPane = this.parentTab.getTabPane();
                     tabPane.getTabs().add(new AcademieOnglet(academiePath.getAcademie()));
@@ -72,7 +76,7 @@ public class ReseauxContenuControl extends BorderPane {
                 })
                 .mouseEnterHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
-//                    System.out.println("On vient de passer sur l'"+academiePath.getAcademie().getNom());
+                    System.out.println("On vient de passer sur l'"+academiePath.getAcademie().getNom());
                     academieActuelle.setText("Liste des thématiques disponibles dans l'"+academiePath.getAcademie().getNom());
                     if(usageParAcademie.get(academiePath.getAcademie().getNom()) != null){
                         for(Usage usage : usageParAcademie.get(academiePath.getAcademie().getNom())){
@@ -101,9 +105,8 @@ public class ReseauxContenuControl extends BorderPane {
 
     private void initDispButtons(){
         flowPane = new FlowPane();
-        TypedQuery<Thematique> query = LaunchApp.em.createNamedQuery("Thematique.findAll", Thematique.class);
         btParTheme = new HashMap<Thematique, Button>();
-        for (Thematique thematique : FXCollections.observableList(query.getResultList())) {
+        for (Thematique thematique : FXCollections.observableList(DAOFactoryProducer.getFactory(DAOType.JPA).createDAOThematique().findAll())) {
             Button bt = new Button(thematique.getNom());
             bt.setPrefSize(125, 60);
             bt.setBackground(Background.fill(Color.web("#c8f4fa")));

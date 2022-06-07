@@ -2,6 +2,9 @@ package fr.univ_amu.iut.contenu.academie;
 
 import fr.univ_amu.iut.LaunchApp;
 import fr.univ_amu.iut.contenu.usage.UsageOnglet;
+import fr.univ_amu.iut.dao.DAOUsage;
+import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dao.factory.DAOType;
 import fr.univ_amu.iut.model.*;
 import jakarta.persistence.TypedQuery;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -58,13 +61,8 @@ public class AcademieContenuControl extends TableView<Usage> {
 
         getColumns().addAll(List.of(nom, discipline, thematique, niveau,detail));
 
-        TypedQuery<Usage> query = LaunchApp.em.createNamedQuery("Usage.findByAcademie", Usage.class);
-        query.setParameter("academie", academie);
-
-        //DAOUsage dao = DAOFactoryProducer.getFactory(DAOType.JPA).createDAOUsage();
-        // TODO Utiliser DAO plutôt que query
-
-        setItems(FXCollections.observableList(query.getResultList()));
+        DAOUsage dao = DAOFactoryProducer.getFactory(DAOType.JPA).createDAOUsage();
+        setItems(FXCollections.observableList(dao.findByAcademie(academie)));
 
     }
 

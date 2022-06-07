@@ -3,6 +3,8 @@ package fr.univ_amu.iut.contenu.thematiques;
 import fr.univ_amu.iut.LaunchApp;
 import fr.univ_amu.iut.components.BoutonThematique;
 import fr.univ_amu.iut.contenu.thematique.ThematiqueOnglet;
+import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dao.factory.DAOType;
 import fr.univ_amu.iut.model.Thematique;
 import jakarta.persistence.TypedQuery;
 import javafx.collections.FXCollections;
@@ -50,8 +52,7 @@ public class ThematiquesContenuControl extends FlowPane {
     }
 
     public void initButtons(){
-        TypedQuery<Thematique> query = LaunchApp.em.createNamedQuery("Thematique.findAll", Thematique.class);
-        for (Thematique thematique : FXCollections.observableList(query.getResultList())) {
+        for (Thematique thematique : FXCollections.observableList(DAOFactoryProducer.getFactory(DAOType.JPA).createDAOThematique().findAll())) {
             BoutonThematique bt = new BoutonThematique(thematique);
             bt.setPrefSize(175, 85);
             bt.setOnAction(ecouteur);
