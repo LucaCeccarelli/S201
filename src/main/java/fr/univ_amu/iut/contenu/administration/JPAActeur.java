@@ -29,7 +29,6 @@ public class JPAActeur extends Tab {
     private TableColumn<Acteur, String> nom;
     private TableColumn<Acteur, Integer> id;
     private TableColumn<Acteur, String> prenom;
-    private TableColumn<Acteur, String> ville;
     private TableColumn<Acteur, String> typeActeur;
     private ObservableList<Acteur> data;
     private HBox boutons;
@@ -119,20 +118,6 @@ public class JPAActeur extends Tab {
         return prenom;
     }
 
-    private static TableColumn<Acteur, String> initialiserColonneVille() {
-        TableColumn<Acteur, String> ville = new TableColumn<>("Ville");
-        ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
-        ville.setCellFactory(TextFieldTableCell.forTableColumn());
-        ville.setOnEditCommit(event -> {
-            int index = event.getTablePosition().getRow();
-            Acteur acteur = event.getTableView().getItems().get(index);
-            em.getTransaction().begin();
-            acteur.setVille(event.getNewValue());
-            em.getTransaction().commit();
-        });
-        return ville;
-    }
-
     private TableColumn<Acteur, String> initialiserColonneTypeActeur() {
         TableColumn<Acteur, String> typeActeur = new TableColumn<>("Type d'acteur");
         typeActeur.setCellValueFactory(new PropertyValueFactory<>("typeActeur"));
@@ -151,12 +136,11 @@ public class JPAActeur extends Tab {
         id = initialiserColonneId();
         nom = initialiserColonneNom();
         prenom = initialiserColonnePrenom();
-        ville = initialiserColonneVille();
         typeActeur = initialiserColonneTypeActeur();
     }
 
     private void insererColonnes() {
-        table.getColumns().addAll(List.of(id, nom, prenom, ville, typeActeur));
+        table.getColumns().addAll(List.of(id, nom, prenom, typeActeur));
     }
 
     private void remplirDonnees() {
