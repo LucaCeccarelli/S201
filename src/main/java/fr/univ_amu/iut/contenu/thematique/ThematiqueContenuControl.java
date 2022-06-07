@@ -67,8 +67,6 @@ public class ThematiqueContenuControl extends TableView<Usage> {
 
         getColumns().addAll(List.of(nom, discipline, academie, niveau,detail));
 
-        TypedQuery<Usage> query = LaunchApp.em.createNamedQuery("Usage.findByThematique", Usage.class);
-        query.setParameter("thematique", thematique);
         setItems(FXCollections.observableList(DAOFactoryProducer.getFactory(DAOType.JPA).createDAOUsage().findByThematique(thematique)));
 
     }

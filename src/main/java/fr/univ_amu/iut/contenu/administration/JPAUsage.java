@@ -2,7 +2,12 @@ package fr.univ_amu.iut.contenu.administration;
 
 import fr.univ_amu.iut.LaunchApp;
 import fr.univ_amu.iut.components.BoutonThematique;
+import fr.univ_amu.iut.dao.DAOActeur;
+import fr.univ_amu.iut.dao.DAOUsage;
+import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dao.factory.DAOType;
 import fr.univ_amu.iut.model.Academie;
+import fr.univ_amu.iut.model.Acteur;
 import fr.univ_amu.iut.model.Usage;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -24,8 +29,7 @@ import javafx.scene.layout.VBox;
 import java.util.List;
 
 public class JPAUsage extends Tab {
-    private static final EntityManagerFactory emf = LaunchApp.emf;
-    private static final EntityManager em = LaunchApp.em;
+    private static final DAOUsage daoUsage = DAOFactoryProducer.getFactory(DAOType.JPA).createDAOUsage();
     private TableView<Usage> table;
     private TableColumn<Usage, String> nom;
     private TableColumn<Usage, Integer> id;
@@ -46,6 +50,54 @@ public class JPAUsage extends Tab {
         initialiserRacine();
         setContent(racine);
     }
+
+    private static TableColumn<Usage, Integer> initialiserColonneId() {
+        TableColumn<Usage, Integer> code = new TableColumn<>("Identifiant");
+        code.setCellValueFactory(new PropertyValueFactory<>("id"));
+        return code;
+    }
+
+    private static TableColumn<Usage, String> initialiserColonneNom() {
+        TableColumn<Usage, String> nom = new TableColumn<>("Nom Usage");
+        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        nom.setCellFactory(TextFieldTableCell.forTableColumn());
+        nom.setOnEditCommit(event -> {
+            int index = event.getTablePosition().getRow();
+            Usage usage = event.getTableView().getItems().get(index);
+            usage.setNom(event.getNewValue());
+            daoUsage.update(usage);
+        });
+        return nom;
+    }
+
+    private static TableColumn<Usage, String> initialiserColonneDescription() {
+        TableColumn<Usage, String> description = new TableColumn<>("Description");
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        description.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        description.setOnEditCommit(event -> {
+            int index = event.getTablePosition().getRow();
+            Usage usage = event.getTableView().getItems().get(index);
+            usage.setDescription(event.getNewValue());
+            daoUsage.update(usage);
+        });
+
+        return description;
+    }
+
+    private static TableColumn<Usage, String> initialiserColonneNiveau() {
+        TableColumn<Usage, String> niveau = new TableColumn<>("Niveau");
+        niveau.setCellValueFactory(new PropertyValueFactory<>("niveau"));
+        niveau.setCellFactory(TextFieldTableCell.forTableColumn());
+        niveau.setOnEditCommit(event -> {
+            int index = event.getTablePosition().getRow();
+            Usage usage = event.getTableView().getItems().get(index);
+            usage.setNiveau(event.getNewValue());
+            daoUsage.update(usage);
+        });
+        return niveau;
+    }
+    
     private void initialiserRacine() {
         racine = new VBox();
         racine.setPadding(new Insets(10));
@@ -63,12 +115,12 @@ public class JPAUsage extends Tab {
 
     private void initialiserBoutonSupprimer() {
         supprimer = new BoutonThematique("Supprimer");
-        supprimer.setOnAction(this::supprimerUsage);
+        supprimer.setOnAction(this::supprimerActeur);
     }
 
     private void initialiserBoutonAjouter() {
         ajouter = new BoutonThematique("Ajouter");
-        ajouter.setOnAction(this::ajouterUsage);
+        ajouter.setOnAction(this::ajouterActeur);
     }
 
     private void initialiserTable() {
@@ -84,66 +136,14 @@ public class JPAUsage extends Tab {
         VBox.setVgrow(table, Priority.ALWAYS);
     }
 
-    private static TableColumn<Usage, Integer> initialiserColonneId() {
-        TableColumn<Usage, Integer> code = new TableColumn<>("Identifiant");
-        code.setCellValueFactory(new PropertyValueFactory<>("id"));
-        return code;
-    }
-
-    private static TableColumn<Usage, String> initialiserColonneNom() {
-        TableColumn<Usage, String> nom = new TableColumn<>("Nom Usage");
-        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        nom.setCellFactory(TextFieldTableCell.forTableColumn());
-        nom.setOnEditCommit(event -> {
-            int index = event.getTablePosition().getRow();
-            Usage Usage = event.getTableView().getItems().get(index);
-            em.getTransaction().begin();
-            Usage.setNom(event.getNewValue());
-            em.getTransaction().commit();
-        });
-        return nom;
-    }
-
-    private static TableColumn<Usage, String> initialiserColonneDescprition() {
-        TableColumn<Usage, String> description = new TableColumn<>("Description");
-        description.setCellValueFactory(new PropertyValueFactory<>("description"));
-        description.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        description.setOnEditCommit(event -> {
-            int index = event.getTablePosition().getRow();
-            Usage Usage = event.getTableView().getItems().get(index);
-            em.getTransaction().begin();
-            Usage.setDescription(event.getNewValue());
-            em.getTransaction().commit();
-        });
-
-        return description;
-    }
-
-    private static TableColumn<Usage, String> initialiserColonneNiveau() {
-        TableColumn<Usage, String> niveau = new TableColumn<>("Niveau");
-        niveau.setCellValueFactory(new PropertyValueFactory<>("niveau"));
-        niveau.setCellFactory(TextFieldTableCell.forTableColumn());
-        niveau.setOnEditCommit(event -> {
-            int index = event.getTablePosition().getRow();
-            Usage Usage = event.getTableView().getItems().get(index);
-            em.getTransaction().begin();
-            Usage.setNiveau(event.getNewValue());
-            em.getTransaction().commit();
-        });
-        return niveau;
-    }
-
     private TableColumn<Usage, Academie> initialiserColonneCodeAca() {
         TableColumn<Usage, Academie> academie = new TableColumn<>("Code Academique");
         academie.setCellValueFactory(new PropertyValueFactory<>("academie"));
-        //academie.setCellFactory(TextFieldTableCell.forTableColumn());
         academie.setOnEditCommit(event -> {
             int index = event.getTablePosition().getRow();
-            Usage Usage = event.getTableView().getItems().get(index);
-            em.getTransaction().begin();
-            Usage.setAcademie(event.getNewValue());
-            em.getTransaction().commit();
+            Usage usage = event.getTableView().getItems().get(index);
+            usage.setAcademie(event.getNewValue());
+            daoUsage.update(usage);
         });
         return academie;
     }
@@ -151,7 +151,7 @@ public class JPAUsage extends Tab {
     private void initialiserColonnes() {
         id = initialiserColonneId();
         nom = initialiserColonneNom();
-        description = initialiserColonneDescprition();
+        description = initialiserColonneDescription();
         niveau = initialiserColonneNiveau();
         academie = initialiserColonneCodeAca();
     }
@@ -161,21 +161,18 @@ public class JPAUsage extends Tab {
     }
 
     private void remplirDonnees() {
-        data = listerUsages();
+        data = listerActeurs();
         table.setItems(data);
     }
 
-    private ObservableList<Usage> listerUsages() {
-        TypedQuery<Usage> query = em.createNamedQuery("Usage.findAll", Usage.class);
-        return FXCollections.observableList(query.getResultList());
+    private ObservableList<Usage> listerActeurs() {
+        return FXCollections.observableList(daoUsage.findAll());
     }
 
-    private void ajouterUsage(ActionEvent event) {
-        Usage Usage = new Usage();
-        em.getTransaction().begin();
-        em.persist(Usage);
-        em.getTransaction().commit();
-        data.add(Usage);
+    private void ajouterActeur(ActionEvent event) {
+        Usage usage = new Usage();
+        daoUsage.insert(usage);
+        data.add(usage);
 
         int rowIndex = data.size() - 1;
         table.requestFocus();
@@ -184,12 +181,10 @@ public class JPAUsage extends Tab {
         table.getFocusModel().focus(rowIndex);
     }
 
-    private void supprimerUsage(ActionEvent event) {
+    private void supprimerActeur(ActionEvent event) {
         if (table.getItems().size() == 0) return;
 
-        em.getTransaction().begin();
-        em.remove(table.getSelectionModel().getSelectedItem());
-        em.getTransaction().commit();
+        daoUsage.delete(table.getSelectionModel().getSelectedItem());
 
         int selectedRowIndex = table.getSelectionModel().getSelectedIndex();
 
@@ -206,4 +201,3 @@ public class JPAUsage extends Tab {
     }
 
 }
-

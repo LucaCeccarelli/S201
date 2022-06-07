@@ -11,9 +11,6 @@ import javafx.stage.Stage;
 
 public class LaunchApp extends Application {
 
-    public static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestionUsagesPU");
-    public static final EntityManager em = emf.createEntityManager();
-
     public static void main(String[] args) {
         Application.launch(args);
     }

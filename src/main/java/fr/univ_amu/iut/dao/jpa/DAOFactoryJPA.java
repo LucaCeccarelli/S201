@@ -12,7 +12,7 @@ public class DAOFactoryJPA implements DAOFactory {
 
     public EntityManager getEntityManager() {
         if(entityManager == null){
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("gestionUsagePU");
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("gestionUsagesPU");
             entityManager = entityManagerFactory.createEntityManager();
         }
         return entityManager;
@@ -22,46 +22,46 @@ public class DAOFactoryJPA implements DAOFactory {
 
     @Override
     public DAOAcademie createDAOAcademie() {
-        return new DAOAcademieJPA(entityManager);
+        return new DAOAcademieJPA(getEntityManager());
     }
 
     @Override
     public DAOActeur createDAOActeur() {
-        return new DAOActeurJPA(entityManager);
+        return new DAOActeurJPA(getEntityManager());
     }
 
     @Override
     public DAODiscipline createDAODiscipline() {
-        return new DAODisciplineJPA(entityManager);
+        return new DAODisciplineJPA(getEntityManager());
     }
 
     @Override
     public DAORegionAcademique createDAORegionAcademique() {
-        return new DAORegionAcademiqueJPA(entityManager);
+        return new DAORegionAcademiqueJPA(getEntityManager());
     }
 
     @Override
     public DAORessource createDAORessource() {
-        return new DAORessourceJPA(entityManager);
+        return new DAORessourceJPA(getEntityManager());
     }
 
     @Override
     public DAOThematique createDAOThematique() {
-        return new DAOThematiqueJPA(entityManager);
+        return new DAOThematiqueJPA(getEntityManager());
     }
 
     @Override
     public DAOTypeActeur createDAOTypeActeur() {
-        return new DAOTypeActeurJPA(entityManager);
+        return new DAOTypeActeurJPA(getEntityManager());
     }
 
     @Override
     public DAOTypeRessource createDAOTypeRessource() {
-        return new DAOTypeRessourceJPA(entityManager);
+        return new DAOTypeRessourceJPA(getEntityManager());
     }
 
     @Override
     public DAOUsage createDAOUsage() {
-        return new DAOUsageJPA(entityManager);
+        return new DAOUsageJPA(getEntityManager());
     }
 }
