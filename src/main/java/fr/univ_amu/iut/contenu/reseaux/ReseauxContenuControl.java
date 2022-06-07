@@ -32,7 +32,7 @@ public class ReseauxContenuControl extends BorderPane {
     private FlowPane flowPane;
     private Label academieActuelle;
     private HashMap<String, List<Usage>> usageParAcademie;
-    private HashMap<Thematique, Button> btParTheme;
+    private HashMap<String, Button> btParTheme;
 
     public ReseauxContenuControl(Tab parentTab){
         this.parentTab = parentTab;
@@ -80,7 +80,7 @@ public class ReseauxContenuControl extends BorderPane {
                     academieActuelle.setText("Liste des thématiques disponibles dans l'"+academiePath.getAcademie().getNom());
                     if(usageParAcademie.get(academiePath.getAcademie().getNom()) != null){
                         for(Usage usage : usageParAcademie.get(academiePath.getAcademie().getNom())){
-                            btParTheme.get(usage.getThematique()).setBackground(Background.fill(Color.web("#62b4bf")));
+                            btParTheme.get(usage.getThematique().getNom()).setBackground(Background.fill(Color.web("#62b4bf")));
                         }
                     }
                 })
@@ -89,7 +89,7 @@ public class ReseauxContenuControl extends BorderPane {
                     System.out.println("On vient de quitter l'"+academiePath.getAcademie().getNom());
                     if(usageParAcademie.get(academiePath.getAcademie().getNom()) != null) {
                         for (Usage usage : usageParAcademie.get(academiePath.getAcademie().getNom())) {
-                            btParTheme.get(usage.getThematique()).setBackground(Background.fill(Color.web("#c8f4fa")));
+                            btParTheme.get(usage.getThematique().getNom()).setBackground(Background.fill(Color.web("#c8f4fa")));
                         }
                     }
                 })
@@ -105,14 +105,14 @@ public class ReseauxContenuControl extends BorderPane {
 
     private void initDispButtons(){
         flowPane = new FlowPane();
-        btParTheme = new HashMap<Thematique, Button>();
+        btParTheme = new HashMap<String, Button>();
         for (Thematique thematique : FXCollections.observableList(DAOFactoryProducer.getFactory(DAOType.JPA).createDAOThematique().findAll())) {
             Button bt = new Button(thematique.getNom());
             bt.setPrefSize(125, 60);
             bt.setBackground(Background.fill(Color.web("#c8f4fa")));
             bt.setWrapText(true);
             flowPane.getChildren().add(bt);
-            btParTheme.put(thematique,bt);
+            btParTheme.put(thematique.getNom(),bt);
         }
         flowPane.setHgap(10);
         flowPane.setVgap(10);
