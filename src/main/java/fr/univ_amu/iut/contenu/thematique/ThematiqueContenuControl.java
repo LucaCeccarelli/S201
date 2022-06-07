@@ -2,6 +2,8 @@ package fr.univ_amu.iut.contenu.thematique;
 
 import fr.univ_amu.iut.LaunchApp;
 import fr.univ_amu.iut.contenu.usage.UsageOnglet;
+import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dao.factory.DAOType;
 import fr.univ_amu.iut.model.Academie;
 import fr.univ_amu.iut.model.Discipline;
 import fr.univ_amu.iut.model.Thematique;
@@ -67,7 +69,7 @@ public class ThematiqueContenuControl extends TableView<Usage> {
 
         TypedQuery<Usage> query = LaunchApp.em.createNamedQuery("Usage.findByThematique", Usage.class);
         query.setParameter("thematique", thematique);
-        setItems(FXCollections.observableList(query.getResultList()));
+        setItems(FXCollections.observableList(DAOFactoryProducer.getFactory(DAOType.JPA).createDAOUsage().findByThematique(thematique)));
 
     }
 
